@@ -2055,7 +2055,7 @@ footer {
 
   .hero-grid .trust-bar {
     flex: 0 0 100%;
-    margin-top: var(--space-4);
+    margin-top: var(--space-8);
   }
 
   /* ---- Problem: 2 columns (content | image) ---- */

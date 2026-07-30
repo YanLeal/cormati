@@ -459,6 +459,12 @@ button:focus-visible,
 }
 
 /* ---- Problem Cards ---- */
+.problem-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
 .problem-cards {
   display: flex;
   flex-direction: column;
@@ -3383,7 +3389,6 @@ footer {
 @media (max-width: 639px) {
 
   /* ---- Section grids: stack ---- */
-  .problem-grid,
   .platform-grid,
   .ai-grid {
     display: flex;
@@ -3414,13 +3419,6 @@ footer {
 
   .platform-pillar strong {
     font-size: 1rem;
-  }
-
-  /* ---- Problem cards: stack ---- */
-  .problem-cards {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
   }
 
   /* ---- Module grid: 2 columns on small screens ---- */

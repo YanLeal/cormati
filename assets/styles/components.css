@@ -2042,11 +2042,13 @@ footer {
   }
 
   .hero-content {
+    order: 1;
     flex: 1;
     min-width: 0;
   }
 
   .hero-visual {
+    order: 2;
     flex: 1.25;
     min-width: 0;
   }

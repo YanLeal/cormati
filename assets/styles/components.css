@@ -2116,9 +2116,8 @@ footer {
 
 @keyframes outcome-enter {
   0%   { opacity: 0; transform: translateX(16px); }
-  30%  { opacity: 1; transform: translateX(0); }
-  85%  { opacity: 1; }
-  100% { opacity: 0.75; }
+  40%  { opacity: 1; transform: translateX(0); }
+  100% { opacity: 1; }
 }
 
 .outcome-dot {
@@ -2502,7 +2501,7 @@ footer {
   .core-brand { transform: none; }
   .core-streams { opacity: 0.5; }
   .conn-pulse { opacity: 0.15; stroke-dashoffset: 0; }
-  .outcome-card { opacity: 0.7; transform: none; }
+  .outcome-card { opacity: 1; transform: none; }
   .outcome-dot { opacity: 0.5; animation: none; }
 }
 

@@ -180,7 +180,7 @@
        Live Activity (izq) + AI Operating Core (der)
        El dashboard del Hero "cobra vida"
        ════════════════════════════════════ -->
-  <section class="section story" data-bg-variant="transition" aria-label="Actividad del sistema en vivo">
+  <section class="section story" data-bg-variant="transition" data-reveal aria-label="Actividad del sistema en vivo">
     <div class="bg-section-ambient" aria-hidden="true">
       <div class="bg-aurora bg-layer"></div>
       <div class="bg-fog bg-layer"></div>
@@ -209,165 +209,138 @@
     </div>
 
     <div class="story-container">
-      <!-- Left: Live Activity Panel -->
-      <div class="story-panel story-panel--activity" aria-live="polite" aria-label="Actividad del sistema en tiempo real">
-        <div class="sp-header">
-          <span class="sp-badge">EN VIVO</span>
-          <h2 class="sp-title">Actividad del sistema</h2>
-        </div>
-
-        <div class="sp-feed" role="log" aria-label="Timeline de operaciones">
-          <div class="tl-item">
-            <span class="tl-time">09:42</span>
-            <span class="tl-desc">Lead recibido</span>
-            <span class="tl-check" aria-hidden="true">✓</span>
-          </div>
-          <div class="tl-item">
-            <span class="tl-time">09:42</span>
-            <span class="tl-desc">Intención detectada</span>
-            <span class="tl-check" aria-hidden="true">✓</span>
-          </div>
-          <div class="tl-item">
-            <span class="tl-time">09:43</span>
-            <span class="tl-desc">IA asignó agente de ventas</span>
-            <span class="tl-check" aria-hidden="true">✓</span>
-          </div>
-          <div class="tl-item">
-            <span class="tl-time">09:43</span>
-            <span class="tl-desc">Reunión agendada</span>
-            <span class="tl-check" aria-hidden="true">✓</span>
-          </div>
-          <div class="tl-item">
-            <span class="tl-time">09:44</span>
-            <span class="tl-desc">CRM actualizado</span>
-            <span class="tl-check" aria-hidden="true">✓</span>
-          </div>
-          <div class="tl-item">
-            <span class="tl-time">09:44</span>
-            <span class="tl-desc">Notificación enviada</span>
-            <span class="tl-check" aria-hidden="true">✓</span>
-          </div>
-        </div>
-
-        <div class="sp-footer">
-          <span class="tl-footnote">Todo ocurre automáticamente.</span>
+      <!-- Left: Narrative Bridge -->
+      <div class="story-narrative">
+        <span class="eyebrow reveal-item" style="--i: 0">AUTOMATIZACIÓN EN TIEMPO REAL</span>
+        <h2 class="story-heading reveal-item" style="--i: 1">Todo ocurre <span class="gradient-text">automáticamente.</span></h2>
+        <p class="story-body reveal-item" style="--i: 2">Cada mensaje, formulario, pago o cambio en tu operación genera una nueva acción. Cormati conecta todos tus sistemas, interpreta el contexto y asigna el siguiente paso al agente de IA correcto. Mientras tu equipo trabaja, la plataforma sigue ejecutando procesos, actualizando información y coordinando toda la operación sin intervención manual.</p>
+        <div class="story-actions reveal-item" style="--i: 3">
+          <a class="btn-primary" href="#demo">Descubre cómo funciona →</a>
         </div>
       </div>
 
-      <!-- Right: AI Operating Core -->
-      <div class="story-panel story-panel--core" aria-hidden="true">
-        <div class="sp-header">
-          <span class="sp-badge sp-badge--core">NÚCLEO IA</span>
-          <h2 class="sp-title">Operando</h2>
-        </div>
-
-        <div class="core-layout">
-          <div class="core-left">
-            <div class="core-visual">
-              <!-- Outer glow ring -->
-              <div class="core-ring core-ring--1"></div>
-              <div class="core-ring core-ring--2"></div>
-              <div class="core-ring core-ring--3"></div>
-
-              <!-- Central core -->
-              <div class="core-center">
-                <div class="core-pulse"></div>
-                <div class="core-brand" aria-hidden="true">
-                  <svg width="28" height="28" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M295.64,126.07V61.52c0-23.56-19.1-42.65-42.66-42.65h-2.08c-23.56,0-42.65,19.1-42.65,42.65v64.87c13.96-4.39,28.81-6.76,44.22-6.76s29.52,2.26,43.18,6.44Z" fill="white"/>
-                    <path d="M208.25,385.54v59.88c0,23.56,19.1,42.65,42.65,42.65h2.08c23.56,0,42.66-19.1,42.66-42.65v-59.56c-13.66,4.18-28.15,6.44-43.18,6.44s-30.26-2.37-44.22-6.76Z" fill="white"/>
-                    <path d="M74.81,104.25c-20.97,0-37.97,17-37.97,37.97v227.84c0,20.97,17,37.97,37.97,37.97h0c.25,0,.48-.03.73-.04V104.29c-.24,0-.48-.04-.73-.04h0Z" fill="white"/>
-                    <path d="M435.19,104.25h0c-.25,0-.48.03-.73.04v303.71c.24,0,.48.04.73.04h0c20.97,0,37.97-17,37.97-37.97v-227.84c0-20.97-17-37.97-37.97-37.97Z" fill="white"/>
-                    <path d="M369.88,170.4c-.23,0-.46.02-.7.02v69.35h-35.74c-7.8-37.57-41.09-65.81-80.98-65.81s-73.18,28.24-80.98,65.81h-30.67v-69.35c-.23,0-.46-.02-.7-.02-20.03,0-36.26,9.6-36.26,21.44v128.62c0,11.84,16.23,21.44,36.26,21.44.23,0,.46-.02.7-.02v-65.18h31.39c8.96,36,41.48,62.68,80.25,62.68s71.3-26.68,80.25-62.68h36.46v65.17c.23,0,.46.02.7.02,20.03,0,36.26-9.6,36.26-21.44v-128.62c0-11.84-16.23-21.44-36.26-21.44ZM252.46,294.08c-20.66,0-37.41-16.75-37.41-37.41s16.75-37.41,37.41-37.41,37.41,16.75,37.41,37.41-16.75,37.41-37.41,37.41Z" fill="white"/>
-                  </svg>
-                  <span class="core-brand-name">Cormati</span>
-                  <span class="core-brand-sub">AI Core</span>
-                </div>
-              </div>
-
-              <!-- Incoming systems — connected to AI Core via animated paths -->
-              <div class="core-orbit">
-                <div class="core-system" style="--angle: -135deg;">
-                  <span class="core-sys-label">CRM</span>
-                </div>
-                <div class="core-system" style="--angle: -90deg;">
-                  <span class="core-sys-label">ERP</span>
-                </div>
-                <div class="core-system" style="--angle: -45deg;">
-                  <span class="core-sys-label">Email</span>
-                </div>
-                <div class="core-system" style="--angle: 0deg;">
-                  <span class="core-sys-label">WhatsApp</span>
-                </div>
-                <div class="core-system" style="--angle: 45deg;">
-                  <span class="core-sys-label">API</span>
-                </div>
-                <div class="core-system" style="--angle: 90deg;">
-                  <span class="core-sys-label">Database</span>
-                </div>
-              </div>
-
-              <!-- SVG connections — flowing energy pulses -->
-              <svg class="core-connections" viewBox="0 0 280 280" aria-hidden="true">
-                <path class="conn-track" d="M 41 41 Q 95 90 140 140" />
-                <path class="conn-pulse conn-pulse--1" d="M 41 41 Q 95 90 140 140" />
-                <path class="conn-track" d="M 140 0 Q 160 70 140 140" />
-                <path class="conn-pulse conn-pulse--2" d="M 140 0 Q 160 70 140 140" />
-                <path class="conn-track" d="M 239 41 Q 195 90 140 140" />
-                <path class="conn-pulse conn-pulse--3" d="M 239 41 Q 195 90 140 140" />
-                <path class="conn-track" d="M 280 140 Q 210 130 140 140" />
-                <path class="conn-pulse conn-pulse--4" d="M 280 140 Q 210 130 140 140" />
-                <path class="conn-track" d="M 239 239 Q 190 195 140 140" />
-                <path class="conn-pulse conn-pulse--5" d="M 239 239 Q 190 195 140 140" />
-                <path class="conn-track" d="M 140 280 Q 115 210 140 140" />
-                <path class="conn-pulse conn-pulse--6" d="M 140 280 Q 115 210 140 140" />
-              </svg>
-
-              <!-- Ambient particle streams -->
-              <div class="core-streams" aria-hidden="true"></div>
-            </div>
-
-            <div class="core-metrics">
-              <div class="core-metric">
-                <span class="core-metric-value" data-count="847">0</span>
-                <span class="core-metric-label">Decisiones/min</span>
-              </div>
-              <div class="core-metric">
-                <span class="core-metric-value" data-count="99.2">0</span>
-                <span class="core-metric-label">Precisión %</span>
-              </div>
-              <div class="core-metric">
-                <span class="core-metric-value" data-count="12">0</span>
-                <span class="core-metric-label">Agentes activos</span>
-              </div>
-            </div>
+      <!-- Right: Live Activity + Operation Center -->
+      <div class="story-panels">
+        <!-- Activity Panel -->
+        <div class="story-panel story-panel--activity" aria-live="polite" aria-label="Actividad del sistema en tiempo real">
+          <div class="sp-header">
+            <span class="sp-badge">EN VIVO</span>
+            <h2 class="sp-title">Actividad del sistema</h2>
           </div>
 
-          <!-- Generated outcomes — right column -->
-          <div class="core-outcomes" role="list" aria-label="Resultados generados">
-            <div class="outcome-card" style="--i: 0" role="listitem">
-              <span class="outcome-dot"></span>
-              <span class="outcome-text">Ventas notificado</span>
+          <div class="sp-feed" role="log" aria-label="Timeline de operaciones">
+            <div class="tl-item">
+              <span class="tl-time">09:42</span>
+              <span class="tl-desc">Lead recibido</span>
+              <span class="tl-check" aria-hidden="true">✓</span>
             </div>
-            <div class="outcome-card" style="--i: 1" role="listitem">
-              <span class="outcome-dot"></span>
-              <span class="outcome-text">Propuesta generada</span>
+            <div class="tl-item">
+              <span class="tl-time">09:42</span>
+              <span class="tl-desc">Intención detectada</span>
+              <span class="tl-check" aria-hidden="true">✓</span>
             </div>
-            <div class="outcome-card" style="--i: 2" role="listitem">
-              <span class="outcome-dot"></span>
-              <span class="outcome-text">Calendario actualizado</span>
+            <div class="tl-item">
+              <span class="tl-time">09:43</span>
+              <span class="tl-desc">IA asignó agente de ventas</span>
+              <span class="tl-check" aria-hidden="true">✓</span>
             </div>
-            <div class="outcome-card" style="--i: 3" role="listitem">
-              <span class="outcome-dot"></span>
-              <span class="outcome-text">CRM sincronizado</span>
+            <div class="tl-item">
+              <span class="tl-time">09:43</span>
+              <span class="tl-desc">Reunión agendada</span>
+              <span class="tl-check" aria-hidden="true">✓</span>
             </div>
-            <div class="outcome-card" style="--i: 4" role="listitem">
-              <span class="outcome-dot"></span>
-              <span class="outcome-text">Cliente respondido</span>
+            <div class="tl-item">
+              <span class="tl-time">09:44</span>
+              <span class="tl-desc">CRM actualizado</span>
+              <span class="tl-check" aria-hidden="true">✓</span>
             </div>
-            <div class="outcome-card" style="--i: 5" role="listitem">
-              <span class="outcome-dot"></span>
-              <span class="outcome-text">Ingresos actualizados</span>
+            <div class="tl-item">
+              <span class="tl-time">09:44</span>
+              <span class="tl-desc">Notificación enviada</span>
+              <span class="tl-check" aria-hidden="true">✓</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI Operating Core -->
+        <div class="story-panel story-panel--core" aria-hidden="true">
+          <div class="sp-header">
+            <span class="sp-badge sp-badge--core">NÚCLEO IA</span>
+            <h2 class="sp-title">Operando</h2>
+          </div>
+
+          <div class="core-layout">
+            <div class="core-left">
+              <div class="core-visual">
+                <div class="core-ring core-ring--1"></div>
+                <div class="core-ring core-ring--2"></div>
+                <div class="core-ring core-ring--3"></div>
+
+                <div class="core-center">
+                  <div class="core-pulse"></div>
+                  <div class="core-brand" aria-hidden="true">
+                    <svg width="28" height="28" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M295.64,126.07V61.52c0-23.56-19.1-42.65-42.66-42.65h-2.08c-23.56,0-42.65,19.1-42.65,42.65v64.87c13.96-4.39,28.81-6.76,44.22-6.76s29.52,2.26,43.18,6.44Z" fill="white"/>
+                      <path d="M208.25,385.54v59.88c0,23.56,19.1,42.65,42.65,42.65h2.08c23.56,0,42.66-19.1,42.66-42.65v-59.56c-13.66,4.18-28.15,6.44-43.18,6.44s-30.26-2.37-44.22-6.76Z" fill="white"/>
+                      <path d="M74.81,104.25c-20.97,0-37.97,17-37.97,37.97v227.84c0,20.97,17,37.97,37.97,37.97h0c.25,0,.48-.03.73-.04V104.29c-.24,0-.48-.04-.73-.04h0Z" fill="white"/>
+                      <path d="M435.19,104.25h0c-.25,0-.48.03-.73.04v303.71c.24,0,.48.04.73.04h0c20.97,0,37.97-17,37.97-37.97v-227.84c0-20.97-17-37.97-37.97-37.97Z" fill="white"/>
+                      <path d="M369.88,170.4c-.23,0-.46.02-.7.02v69.35h-35.74c-7.8-37.57-41.09-65.81-80.98-65.81s-73.18,28.24-80.98,65.81h-30.67v-69.35c-.23,0-.46-.02-.7-.02-20.03,0-36.26,9.6-36.26,21.44v128.62c0,11.84,16.23,21.44,36.26,21.44.23,0,.46-.02.7-.02v-65.18h31.39c8.96,36,41.48,62.68,80.25,62.68s71.3-26.68,80.25-62.68h36.46v65.17c.23,0,.46.02.7.02,20.03,0,36.26-9.6,36.26-21.44v-128.62c0-11.84-16.23-21.44-36.26-21.44ZM252.46,294.08c-20.66,0-37.41-16.75-37.41-37.41s16.75-37.41,37.41-37.41,37.41,16.75,37.41,37.41-16.75,37.41-37.41,37.41Z" fill="white"/>
+                    </svg>
+                    <span class="core-brand-name">Cormati</span>
+                    <span class="core-brand-sub">AI Core</span>
+                  </div>
+                </div>
+
+                <div class="core-orbit">
+                  <div class="core-system" style="--angle: -135deg;"><span class="core-sys-label">CRM</span></div>
+                  <div class="core-system" style="--angle: -90deg;"><span class="core-sys-label">ERP</span></div>
+                  <div class="core-system" style="--angle: -45deg;"><span class="core-sys-label">Email</span></div>
+                  <div class="core-system" style="--angle: 0deg;"><span class="core-sys-label">WhatsApp</span></div>
+                  <div class="core-system" style="--angle: 45deg;"><span class="core-sys-label">API</span></div>
+                  <div class="core-system" style="--angle: 90deg;"><span class="core-sys-label">Database</span></div>
+                </div>
+
+                <svg class="core-connections" viewBox="0 0 280 280" aria-hidden="true">
+                  <path class="conn-track" d="M 41 41 Q 95 90 140 140" />
+                  <path class="conn-pulse conn-pulse--1" d="M 41 41 Q 95 90 140 140" />
+                  <path class="conn-track" d="M 140 0 Q 160 70 140 140" />
+                  <path class="conn-pulse conn-pulse--2" d="M 140 0 Q 160 70 140 140" />
+                  <path class="conn-track" d="M 239 41 Q 195 90 140 140" />
+                  <path class="conn-pulse conn-pulse--3" d="M 239 41 Q 195 90 140 140" />
+                  <path class="conn-track" d="M 280 140 Q 210 130 140 140" />
+                  <path class="conn-pulse conn-pulse--4" d="M 280 140 Q 210 130 140 140" />
+                  <path class="conn-track" d="M 239 239 Q 190 195 140 140" />
+                  <path class="conn-pulse conn-pulse--5" d="M 239 239 Q 190 195 140 140" />
+                  <path class="conn-track" d="M 140 280 Q 115 210 140 140" />
+                  <path class="conn-pulse conn-pulse--6" d="M 140 280 Q 115 210 140 140" />
+                </svg>
+
+                <div class="core-streams" aria-hidden="true"></div>
+              </div>
+
+              <div class="core-metrics">
+                <div class="core-metric">
+                  <span class="core-metric-value" data-count="847">0</span>
+                  <span class="core-metric-label">Decisiones/min</span>
+                </div>
+                <div class="core-metric">
+                  <span class="core-metric-value" data-count="99.2">0</span>
+                  <span class="core-metric-label">Precisión %</span>
+                </div>
+                <div class="core-metric">
+                  <span class="core-metric-value" data-count="12">0</span>
+                  <span class="core-metric-label">Agentes activos</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="core-outcomes" role="list" aria-label="Resultados generados">
+              <div class="outcome-card" style="--i: 0" role="listitem"><span class="outcome-dot"></span><span class="outcome-text">Ventas notificado</span></div>
+              <div class="outcome-card" style="--i: 1" role="listitem"><span class="outcome-dot"></span><span class="outcome-text">Propuesta generada</span></div>
+              <div class="outcome-card" style="--i: 2" role="listitem"><span class="outcome-dot"></span><span class="outcome-text">Calendario actualizado</span></div>
+              <div class="outcome-card" style="--i: 3" role="listitem"><span class="outcome-dot"></span><span class="outcome-text">CRM sincronizado</span></div>
+              <div class="outcome-card" style="--i: 4" role="listitem"><span class="outcome-dot"></span><span class="outcome-text">Cliente respondido</span></div>
+              <div class="outcome-card" style="--i: 5" role="listitem"><span class="outcome-dot"></span><span class="outcome-text">Ingresos actualizados</span></div>
             </div>
           </div>
         </div>

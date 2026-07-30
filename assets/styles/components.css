@@ -2203,10 +2203,114 @@ footer {
 }
 
 /* ════════════════════════════════════════
-   Story — Background Variant Overrides
-   "transition" variant: slightly elevated ambient
+   Story — Narrative (Left Column)
    ════════════════════════════════════════ */
 
+.story-narrative {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  align-self: center;
+  max-width: 480px;
+}
+
+.story-narrative .eyebrow {
+  color: var(--color-purple-300);
+}
+
+.story-heading {
+  font-size: var(--font-h2);
+  font-weight: var(--weight-bold);
+  line-height: 1.15;
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--color-white);
+}
+
+.story-body {
+  font-size: var(--font-body);
+  line-height: 1.7;
+  color: var(--color-gray-300);
+}
+
+.story-actions {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  padding-top: var(--space-2);
+}
+
+/* ── Panels Wrapper (Right Column) ── */
+.story-panels {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  height: 100%;
+}
+
+.story-panels .story-panel {
+  min-height: auto;
+  flex: 1;
+}
+
+/* ════════════════════════════════════════
+   Story — Entrance Sequence
+   Choreography: text → panels → background
+   ════════════════════════════════════════ */
+
+/* Section never fades — children control their own entrance */
+.story[data-reveal] {
+  opacity: 1;
+  transform: none;
+}
+
+/* All entrance items start hidden */
+.reveal-item {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 700ms var(--ease-out),
+    transform 700ms var(--ease-out);
+  transition-delay: calc(var(--i) * 120ms);
+}
+
+/* Panels entrance — starts after narrative text */
+.story-panels {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 700ms var(--ease-out),
+    transform 700ms var(--ease-out);
+  transition-delay: 550ms;
+}
+
+/* Background layers start hidden — fade in after panels */
+.story .bg-fog,
+.story .bg-orb,
+.story .bg-connections,
+.story .bg-particles-css {
+  opacity: 0;
+  transition: opacity 1800ms ease-out 1600ms;
+}
+
+/* When section scrolls into view */
+.story.visible .reveal-item {
+  opacity: 1;
+  transform: none;
+}
+
+.story.visible .story-panels {
+  opacity: 1;
+  transform: none;
+}
+
+.story.visible .bg-fog,
+.story.visible .bg-orb,
+.story.visible .bg-connections,
+.story.visible .bg-particles-css {
+  opacity: 1;
+}
+
+/* Background Variant Overrides */
 .story .bg-aurora {
   opacity: 0.14;
 }
@@ -2331,7 +2435,17 @@ footer {
 
   .story-container {
     grid-template-columns: 1fr;
-    gap: var(--space-5);
+    gap: var(--space-6);
+  }
+
+  .story-narrative {
+    max-width: 100%;
+    align-self: start;
+    gap: var(--space-4);
+  }
+
+  .story-panels {
+    gap: var(--space-4);
   }
 
   .story-panel {
@@ -2620,6 +2734,18 @@ footer {
   .conn-pulse { opacity: 0.15; stroke-dashoffset: 0; }
   .outcome-card { opacity: 1; transform: none; }
   .outcome-dot { opacity: 0.5; animation: none; }
+
+  /* Entrance: show everything immediately */
+  .reveal-item,
+  .story-panels,
+  .story .bg-fog,
+  .story .bg-orb,
+  .story .bg-connections,
+  .story .bg-particles-css {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 /* ---- Reduced motion for variant layers ---- */

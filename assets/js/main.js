@@ -312,6 +312,30 @@
 })();
 
 /**
+ * Architecture Reveal — staggered layer entrance
+ * Each layer fades in sequence, then connectors start flowing.
+ */
+(function initArchReveal() {
+  'use strict';
+  var arch = document.querySelector('.platform-architecture');
+  if (!arch) return;
+
+  var observer = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('arch-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  observer.observe(arch);
+})();
+
+/**
  * Particle Engine — Ambient Energy Particles (Layer 05)
  */
 (function initParticles() {

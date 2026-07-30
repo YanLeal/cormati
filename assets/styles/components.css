@@ -589,6 +589,12 @@ button:focus-visible,
 }
 
 /* ---- Chat ---- */
+.ai-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
 .chat {
   margin-top: var(--space-5);
   display: flex;
@@ -3387,14 +3393,6 @@ footer {
    ════════════════════════════════════════ */
 
 @media (max-width: 639px) {
-
-  /* ---- Section grids: stack ---- */
-  .platform-grid,
-  .ai-grid {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-6);
-  }
 
   /* ---- Platform pillars: stack vertically ---- */
   .platform-pillars {

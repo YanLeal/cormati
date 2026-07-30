@@ -208,6 +208,22 @@
   var targets = [248, 18, 12];
   var suffixes = ['', ' h', ''];
 
+  // Reduced motion: show final values immediately when section appears
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var reduceObs = new MutationObserver(function () {
+      if (section.classList.contains('cinematic-visible')) {
+        metrics.forEach(function (el, i) {
+          el.textContent = suffixes[i] === ' h'
+            ? targets[i].toFixed(1)
+            : targets[i].toString();
+        });
+        reduceObs.disconnect();
+      }
+    });
+    reduceObs.observe(section, { attributes: true, attributeFilter: ['class'] });
+    return;
+  }
+
   var DURATION = 5200; // ms — matches timeline entry window
   var startTime = null;
   var frameId = null;

@@ -2043,7 +2043,7 @@ footer {
 /* Core Metrics */
 .core-metrics {
   display: flex;
-  gap: var(--space-6);
+  gap: var(--space-3);
   justify-content: center;
   flex-wrap: wrap;
   margin-bottom: var(--space-5);
@@ -2053,41 +2053,44 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
-  padding: var(--space-3) var(--space-4);
+  gap: 2px;
+  padding: var(--space-2) var(--space-3);
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.04);
   border-radius: var(--radius-md);
-  min-width: 100px;
+  min-width: 0;
+  flex: 1;
 }
 
 .core-metric-value {
-  font-size: 1.5rem;
+  font-size: 1.15rem;
   font-weight: var(--weight-bold);
   color: var(--color-white);
   font-variant-numeric: tabular-nums;
+  line-height: 1.2;
   will-change: transform, text-shadow;
-  transition: none; /* pulse animation handles visual changes */
+  transition: none;
 }
 
 /* ── KPI pulse — scale + glow on timeline sync ── */
 @keyframes kpi-pulse {
   0%   { transform: scale(1); text-shadow: 0 0 0 rgba(208, 255, 133, 0); }
-  35%  { transform: scale(1.06); text-shadow: 0 0 18px rgba(208, 255, 133, 0.5); }
+  35%  { transform: scale(1.06); text-shadow: 0 0 16px rgba(208, 255, 133, 0.45); }
   100% { transform: scale(1); text-shadow: 0 0 0 rgba(208, 255, 133, 0); }
 }
 
 .kpi-pulse {
   animation: kpi-pulse 280ms var(--ease-out) both;
 }
-}
 
 .core-metric-label {
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   font-weight: var(--weight-bold);
   letter-spacing: var(--letter-spacing-wider);
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  line-height: 1.2;
 }
 
 /* ── Core Layout: visual + metrics (left) | outcomes (right) ── */

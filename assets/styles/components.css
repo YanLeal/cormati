@@ -784,8 +784,8 @@ footer {
    ============================================ */
 .hero {
   min-height: 100svh;
-  padding-top: 108px;
-  padding-bottom: 108px;
+  padding-top: 88px;
+  padding-bottom: 88px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -919,8 +919,8 @@ footer {
    ════════════════════════════════════════════ */
 
 .os-frame {
-  width: 260px;
-  padding: 24px 22px;
+  width: 295px;
+  padding: 28px 24px;
   border-radius: var(--radius-lg);
   z-index: 2;
   /* Override default glass for more presence */
@@ -2033,20 +2033,15 @@ footer {
 
 @media (min-width: 640px) {
 
-  /* ---- Hero: 2 columns (text | visual) ---- */
+  /* ---- Hero: editorial 45/55 layout (text | visual) ---- */
   .hero-grid {
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
+    grid-template-columns: 1fr 1.25fr;
+    gap: 28px;
+    align-items: start;
   }
 
-  .hero-visual  {
-    grid-column: 2;
-    margin-top: 80px;
-  }
-  .hero-content {
-    grid-column: 1;
-    margin-bottom: 100px;
-  }
+  .hero-visual  { grid-column: 2; }
+  .hero-content { grid-column: 1; }
 
   .hero-grid .trust-bar {
     grid-column: 1 / -1;

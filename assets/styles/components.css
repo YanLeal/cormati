@@ -1147,6 +1147,57 @@ footer {
   width: 100%;
 }
 
+/* ============================================
+   CTA Final Section
+   ============================================ */
+
+.cta-box {
+  text-align: center;
+  max-width: 700px;
+  margin-inline: auto;
+}
+
+.cta-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-top: var(--space-5);
+  justify-content: center;
+}
+
+.cta-actions .btn-primary,
+.cta-actions .btn-light {
+  flex: 1;
+  min-width: 0;
+  padding: 14px 24px;
+  text-align: center;
+  width: 100%;
+}
+
+.cta-box {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.cta-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-top: var(--space-5);
+}
+
+.cta-actions .btn-primary,
+.cta-actions .btn-light {
+  flex: 1;
+  min-width: 0;
+  padding: 14px 18px;
+  text-align: center;
+  width: 100%;
+}
+
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -3223,6 +3274,15 @@ footer {
 
   .hero-actions .btn-primary,
   .hero-actions .btn-light {
+    width: auto;
+  }
+
+  .cta-actions {
+    flex-direction: row;
+  }
+
+  .cta-actions .btn-primary,
+  .cta-actions .btn-light {
     width: auto;
   }
 

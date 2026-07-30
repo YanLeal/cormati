@@ -588,68 +588,6 @@ button:focus-visible,
   flex-shrink: 0;
 }
 
-/* ---- Chat ---- */
-.ai-grid {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-6);
-}
-
-.chat {
-  margin-top: var(--space-5);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-}
-
-.chat-head {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  margin-bottom: var(--space-2);
-}
-
-.chat-avatar {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: var(--color-primary-500);
-  color: var(--color-white);
-  font-weight: var(--weight-bold);
-  font-size: 0.85rem;
-  flex-shrink: 0;
-}
-
-.chat-head .status {
-  font-size: 0.7rem;
-  color: var(--color-success);
-}
-
-.bubble {
-  padding: var(--space-3) var(--space-4);
-  border-radius: var(--radius-md);
-  font-size: var(--font-small);
-  line-height: 1.5;
-}
-
-.bubble.bot {
-  background: #F7F2FF;
-  color: var(--color-neutral-700);
-  border-bottom-left-radius: var(--radius-sm);
-  max-width: 85%;
-}
-
-.bubble.user {
-  background: var(--color-primary-500);
-  color: var(--color-white);
-  align-self: flex-end;
-  border-bottom-right-radius: var(--radius-sm);
-  max-width: 85%;
-}
-
 /* ---- Footer ---- */
 footer {
   background: var(--color-neutral-900);
@@ -3344,14 +3282,6 @@ footer {
 
   /* ---- Platform: 2 columns (content | image) ---- */
   .platform-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-8);
-    align-items: center;
-  }
-
-  /* ---- AI: 2 columns (image | content) ---- */
-  .ai-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--space-8);

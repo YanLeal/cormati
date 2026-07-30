@@ -907,7 +907,6 @@ footer {
 
 .hero-visual {
   position: relative;
-  min-height: 420px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2037,7 +2036,7 @@ footer {
   /* ---- Hero: 2 columns (text | visual) ---- */
   .hero-grid {
     grid-template-columns: 1fr 1fr;
-    align-items: start;
+    align-items: center;
   }
 
   .hero-visual  { grid-column: 2; }
@@ -2128,7 +2127,6 @@ footer {
 
   .hero-visual {
     order: 2;
-    min-height: 300px;
   }
 
   .hero-actions {

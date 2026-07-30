@@ -2568,6 +2568,386 @@ footer {
 }
 
 /* ════════════════════════════════════════
+   Shift — Narrative Pivot Section
+   ════════════════════════════════════════ */
+
+.shift {
+  text-align: center;
+  padding: var(--space-9) 0;
+}
+
+.shift-content {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.shift-content .eyebrow {
+  color: var(--color-primary-500);
+  margin-bottom: var(--space-5);
+}
+
+.shift-title-group {
+  margin-bottom: var(--space-8);
+}
+
+.shift-old {
+  font-size: clamp(1.35rem, 3.5vw, 1.85rem);
+  font-weight: var(--weight-semibold);
+  color: var(--color-neutral-500);
+  line-height: 1.3;
+  margin-bottom: var(--space-3);
+}
+
+.shift-old .strike {
+  text-decoration: line-through;
+  text-decoration-color: var(--color-neutral-300);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.shift-new {
+  font-size: clamp(1.75rem, 4.5vw, 3rem);
+  font-weight: var(--weight-bold);
+  line-height: 1.1;
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--color-neutral-900);
+}
+
+.shift-body {
+  font-size: var(--font-body);
+  line-height: var(--leading-relaxed);
+  color: var(--color-neutral-500);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.shift-body p {
+  margin-bottom: var(--space-4);
+}
+
+.shift-body p:last-of-type {
+  margin-bottom: 0;
+}
+
+.shift-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  justify-content: center;
+  margin: var(--space-6) 0;
+}
+
+.shift-chips span {
+  display: inline-block;
+  padding: 4px 14px;
+  background: var(--color-purple-100);
+  border-radius: var(--radius-pill);
+  font-size: var(--font-small);
+  font-weight: var(--weight-semibold);
+  color: var(--color-primary-500);
+  line-height: 1.4;
+}
+
+.shift-pivot {
+  margin-top: var(--space-7);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-neutral-100);
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  color: var(--color-neutral-600);
+}
+
+.shift-pivot strong {
+  color: var(--color-neutral-900);
+}
+
+/* ── Shift Flow Diagram ── */
+
+.shift-flow {
+  padding: var(--space-5) 0 var(--space-6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.flow-in,
+.flow-out {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.flow-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+/* ════════════════════════════════════════
+   Convergence Animation
+   Default state: separated / invisible
+   .flow-animate triggers convergence
+   ════════════════════════════════════════ */
+
+/* ── Source chips: start spread out ── */
+.flow-chip {
+  display: inline-block;
+  padding: 5px 14px;
+  background: var(--color-purple-100);
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: var(--weight-bold);
+  color: var(--color-primary-500);
+  letter-spacing: var(--letter-spacing-wide);
+  line-height: 1.4;
+  cursor: default;
+  /* Separated: spread horizontally, lowered, invisible */
+  transform: translateX(calc((var(--i) - 2.5) * 50px)) translateY(18px);
+  opacity: 0;
+  will-change: transform, opacity;
+  transition:
+    transform 1s cubic-bezier(.22,1,.36,1),
+    opacity 0.5s ease-out,
+    background 0.2s ease-out,
+    color 0.2s ease-out,
+    box-shadow 0.2s ease-out;
+  transition-delay: calc(var(--i) * 0.06s);
+}
+
+/* Converge to center */
+.flow-animate .flow-chip {
+  transform: translateX(0) translateY(0);
+  opacity: 1;
+  transition-delay: calc(0.1s + var(--i) * 0.06s);
+}
+
+/* ── Outcome chips: appear later, no spread ── */
+.flow-chip--out {
+  background: var(--color-neutral-100);
+  color: var(--color-neutral-700);
+  transform: translateY(12px);
+  transition-delay: 0s;
+}
+
+.flow-animate .flow-chip--out {
+  transform: translateY(0);
+  transition-delay: calc(0.9s + var(--i) * 0.07s);
+}
+
+/* ── Arrows: appear staged, then pulse indefinitely ── */
+.flow-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  font-size: 0.85rem;
+  color: var(--color-primary-500);
+  opacity: 0;
+  transition:
+    opacity 0.35s ease-out,
+    text-shadow 0.35s ease-out,
+    color 0.35s ease-out;
+  transition-delay: calc(0.4s + var(--i) * 0.06s);
+}
+
+.flow-animate .flow-arrow {
+  opacity: 1;
+  animation: arrow-pulse 1.8s ease-in-out infinite;
+  animation-delay: calc(0.4s + var(--i) * 0.06s);
+  text-shadow: 0 0 6px rgba(118, 38, 251, 0.4);
+}
+
+/* Outcome arrows: delayed */
+.flow-out .flow-arrow {
+  transition-delay: 0s;
+}
+
+.flow-animate .flow-out .flow-arrow {
+  opacity: 1;
+  transition-delay: calc(0.8s + var(--i) * 0.07s);
+  animation-delay: calc(0.8s + var(--i) * 0.07s);
+  text-shadow: 0 0 6px rgba(118, 38, 251, 0.4);
+}
+
+@keyframes arrow-pulse {
+  0%, 100% { opacity: 0.3; transform: translateY(0); text-shadow: 0 0 4px transparent; }
+  50%      { opacity: 1; transform: translateY(3px); color: var(--color-primary-600); text-shadow: 0 0 12px rgba(118, 38, 251, 0.6); }
+}
+
+/* ── Hub: scale up from small ── */
+.flow-hub {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--color-primary-500), #9B5CFF);
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(0.5);
+  will-change: transform, opacity;
+  transition:
+    opacity 0.5s ease-out,
+    transform 0.8s cubic-bezier(.34,1.56,.64,1);
+  transition-delay: 0s;
+}
+
+.flow-animate .flow-hub {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 0.15s;
+  animation: hub-glow 3s ease-in-out infinite;
+  animation-delay: 0.8s;
+}
+
+.flow-isologo {
+  width: 40px;
+  height: 40px;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.35))
+          drop-shadow(0 0 14px rgba(255, 255, 255, 0.15));
+  transition: filter 0.4s ease-out;
+}
+
+/* Isologo emits stronger glow on hover */
+.shift-flow:has(.flow-chip:hover) .flow-isologo {
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6))
+          drop-shadow(0 0 24px rgba(255, 255, 255, 0.25));
+}
+
+@keyframes hub-glow {
+  0%, 100% { box-shadow: 0 0 18px rgba(118, 38, 251, 0.15); }
+  50%      { box-shadow: 0 0 60px rgba(118, 38, 251, 0.5); }
+}
+
+/* ── Converged messages ── */
+.flow-converged {
+  text-align: center;
+  margin-top: var(--space-4);
+}
+
+.flow-tagline {
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  font-weight: var(--weight-semibold);
+  color: var(--color-primary-500);
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+  transition-delay: 0s;
+}
+
+.flow-animate .flow-tagline {
+  opacity: 1;
+  transition-delay: 1.4s;
+}
+
+.flow-climax {
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  font-weight: var(--weight-black);
+  line-height: 1.15;
+  margin-top: var(--space-2);
+  opacity: 0;
+  transition: opacity 0.7s ease-out;
+  transition-delay: 0s;
+}
+
+.flow-animate .flow-climax {
+  opacity: 1;
+  transition-delay: 1.9s;
+}
+
+/* ════════════════════════════════════════
+   Micro-interactions: hover illuminates
+   ════════════════════════════════════════ */
+
+/* Chip hover: highlight the system */
+.flow-chip:hover,
+.flow-chip--out:hover {
+  background: var(--color-primary-500);
+  color: var(--color-white);
+  box-shadow: 0 4px 20px rgba(118, 38, 251, 0.4);
+  transform: translateX(0) translateY(-2px) scale(1.04);
+}
+
+.flow-animate .flow-chip--out:hover {
+  transform: translateY(-2px) scale(1.04);
+}
+
+/* Any chip hover → all connections illuminate */
+.shift-flow:has(.flow-chip:hover) .flow-arrow {
+  opacity: 1;
+  color: var(--color-primary-500);
+  text-shadow: 0 0 16px rgba(118, 38, 251, 0.8);
+  transition:
+    opacity 0.25s ease-out,
+    text-shadow 0.25s ease-out,
+    color 0.25s ease-out;
+}
+
+/* Hub glows brighter on chip hover */
+.shift-flow:has(.flow-chip:hover) .flow-hub {
+  box-shadow: 0 0 40px rgba(118, 38, 251, 0.5), 0 0 80px rgba(118, 38, 251, 0.2);
+  transition: box-shadow 0.3s ease-out;
+}
+
+/* Outcome chips hover → light up outgoing arrows too */
+.shift-flow:has(.flow-chip--out:hover) .flow-out .flow-arrow {
+  opacity: 1;
+  color: var(--color-primary-500);
+  text-shadow: 0 0 16px rgba(118, 38, 251, 0.8);
+}
+
+/* Smooth hover-out transitions */
+.shift-flow .flow-hub {
+  transition: box-shadow 0.35s ease-out;
+}
+
+@media (max-width: 639px) {
+  .shift {
+    padding: var(--space-7) 0;
+  }
+
+  .shift-title-group {
+    margin-bottom: var(--space-6);
+  }
+
+  .shift-flow {
+    padding: var(--space-4) 0;
+    gap: var(--space-2);
+  }
+
+  .flow-chip {
+    padding: 4px 10px;
+    font-size: 0.65rem;
+    transform: translateX(calc((var(--i) - 2.5) * 28px)) translateY(14px);
+  }
+
+  .flow-hub {
+    width: 60px;
+    height: 60px;
+  }
+
+  .flow-isologo {
+    width: 30px;
+    height: 30px;
+  }
+
+  .flow-tagline {
+    margin-top: var(--space-1);
+  }
+
+  .flow-climax {
+    font-size: clamp(1.2rem, 5vw, 1.5rem);
+  }
+
+  .shift-pivot {
+    margin-top: var(--space-6);
+    padding-top: var(--space-5);
+  }
+}
+
+/* ════════════════════════════════════════
    Desktop — Section Grid Layouts
    ════════════════════════════════════════ */
 
@@ -2825,6 +3205,47 @@ footer {
   .bg-section-ambient .bg-particles-css .micro-dot {
     opacity: 0 !important;
     animation: none !important;
+  }
+
+  /* Shift flow: show static, no animations */
+  .shift-flow .flow-chip,
+  .shift-flow .flow-arrow,
+  .shift-flow .flow-hub,
+  .shift-flow .flow-tagline,
+  .shift-flow .flow-climax {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+  .shift-flow .flow-arrow {
+    color: var(--color-primary-500);
+    opacity: 0.5;
+  }
+  .shift-flow .flow-hub {
+    box-shadow: 0 0 18px rgba(118, 38, 251, 0.12);
+  }
+
+  .shift-flow .flow-isologo {
+    filter: none;
+  }
+
+  /* Hover still changes color but no transform/shadow animation */
+  .shift-flow .flow-chip:hover,
+  .shift-flow .flow-chip--out:hover {
+    transform: none !important;
+    background: var(--color-primary-500);
+    color: white;
+    box-shadow: none;
+  }
+  .shift-flow:has(.flow-chip:hover) .flow-arrow {
+    text-shadow: none;
+  }
+  .shift-flow:has(.flow-chip:hover) .flow-hub {
+    box-shadow: 0 0 18px rgba(118, 38, 251, 0.12);
+  }
+  .shift-flow:has(.flow-chip:hover) .flow-isologo {
+    filter: none;
   }
 }
 

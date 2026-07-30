@@ -291,6 +291,27 @@
 })();
 
 /**
+ * Shift Flow Convergence — triggers .flow-animate
+ * Replays when section re-enters viewport
+ */
+(function initShiftFlow() {
+  'use strict';
+  var section = document.querySelector('.shift .shift-flow');
+  if (!section) return;
+
+  var observer = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        entry.target.classList.toggle('flow-animate', entry.isIntersecting);
+      });
+    },
+    { threshold: 0.18 }
+  );
+
+  observer.observe(section);
+})();
+
+/**
  * Particle Engine — Ambient Energy Particles (Layer 05)
  */
 (function initParticles() {

@@ -2054,6 +2054,7 @@ footer {
   }
 
   .hero-grid .trust-bar {
+    order: 3;
     flex: 0 0 100%;
     margin-top: var(--space-8);
   }

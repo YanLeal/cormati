@@ -906,16 +906,147 @@ footer {
 
 .hero-visual {
   position: relative;
-  min-height: 380px;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* ============================================
+/* ════════════════════════════════════════════
+   OS Dashboard — Central Interface
+   The hero's centerpiece. Larger, more
+   prominent glass than the orbiting cards.
+   ════════════════════════════════════════════ */
+
+.os-frame {
+  width: 260px;
+  padding: 24px 22px;
+  border-radius: var(--radius-lg);
+  z-index: 2;
+  /* Override default glass for more presence */
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 32px 100px rgba(77, 25, 158, 0.30),
+              inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+/* ── OS Inner Layout ── */
+
+.os-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: var(--weight-bold);
+  color: var(--color-white);
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.os-dot {
+  display: inline-block;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #D0FF85;
+  box-shadow: 0 0 8px rgba(208, 255, 133, 0.6);
+}
+
+.os-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 12px;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.os-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: var(--weight-bold);
+  color: var(--color-white);
+}
+
+.os-badge {
+  display: inline-block;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.os-badge-active {
+  background: #D0FF85;
+  box-shadow: 0 0 6px rgba(208, 255, 133, 0.5);
+}
+
+.os-card-status {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.os-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 16px 0;
+}
+
+.os-panel-label {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: var(--weight-bold);
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  margin-bottom: 8px;
+}
+
+.os-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.os-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.7rem;
+}
+
+.os-node {
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+}
+
+.os-node-accent {
+  background: rgba(118, 38, 251, 0.2);
+  color: #DABFFF;
+}
+
+.os-node-output {
+  background: rgba(208, 255, 133, 0.1);
+  color: #D0FF85;
+}
+
+.os-connector {
+  display: inline-block;
+  width: 12px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* ════════════════════════════════════════════
    Hero Live Activity Layer
-   Cards orbit the OS dashboard with content
-   that cycles to convey "the platform is
-   working." Every card uses .glass for the
+   Cards form a close ring around the OS
+   dashboard. Every card uses .glass for the
    base appearance.
-   ============================================ */
+   ════════════════════════════════════════════ */
 
 .live-card {
   position: absolute;
@@ -931,14 +1062,47 @@ footer {
 .live-card--notification { width: 150px; }
 .live-card--status       { width: 155px; }
 
-/* ── Desktop Positions ──
-   Cards orbit the OS frame. Offsets keep them
-   near the frame edges without overlapping. */
+/* ── Desktop Ring Positions ──
+   Cards surround the centered dashboard.
+         Notification
+              │
+              │
+    Calendar ─┼─ Dashboard ─┼─ AI Workforce
+              │
+              │
+           WhatsApp
+   Cards overflow .hero-visual to maintain
+   separation. .hero { overflow: visible }
+   keeps them from being clipped.
+   Transform is safe — no animation on containers. */
 @media (min-width: 640px) {
-  .live-card--chat         { top: -12px;  right: 8px;  }
-  .live-card--calendar     { bottom: 4px; left: 0;     }
-  .live-card--notification { top: 18px;   left: 4px;   }
-  .live-card--status       { bottom: 4px; right: 8px;  }
+  .live-card--notification {
+    top: -22px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .live-card--calendar {
+    top: 50%;
+    left: -38px;
+    transform: translateY(-50%);
+  }
+  .live-card--status {
+    top: 50%;
+    right: -38px;
+    transform: translateY(-50%);
+  }
+  .live-card--chat {
+    bottom: -205px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* ── Tablet: narrower container needs more offset ── */
+@media (max-width: 1023px) and (min-width: 640px) {
+  .live-card--calendar { left: -70px; }
+  .live-card--status   { right: -70px; }
+  .live-card--chat     { bottom: -50px; }
 }
 
 /* ════════════════════════════════════════════

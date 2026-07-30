@@ -2039,8 +2039,14 @@ footer {
     align-items: center;
   }
 
-  .hero-visual  { grid-column: 2; }
-  .hero-content { grid-column: 1; }
+  .hero-visual  {
+    grid-column: 2;
+    margin-top: 80px;
+  }
+  .hero-content {
+    grid-column: 1;
+    margin-bottom: 100px;
+  }
 
   .hero-grid .trust-bar {
     grid-column: 1 / -1;

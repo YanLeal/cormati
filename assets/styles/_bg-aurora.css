@@ -1,0 +1,59 @@
+/* ============================================
+   Aurora Layer — Visual Depth System Layer 02
+   Extremely slow, almost imperceptible movement
+   Cormati purple palette only
+   ============================================ */
+
+.bg-aurora {
+  z-index: var(--bg-z-aurora, 2);
+  opacity: var(--bg-opacity-aurora, 0.10);
+}
+
+.bg-aurora::before,
+.bg-aurora::after {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  border-radius: 50%;
+}
+
+/* ---- Primary aurora: large soft radial glow ---- */
+.bg-aurora::before {
+  background:
+    radial-gradient(ellipse 70% 60% at 30% 50%, rgba(118, 38, 251, 0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 55% at 70% 30%, rgba(155, 92, 255, 0.08) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 40% at 50% 80%, rgba(74, 12, 149, 0.10) 0%, transparent 60%);
+  animation: aurora-drift var(--bg-duration-slow) ease-in-out infinite alternate;
+}
+
+/* ---- Secondary aurora: complementary counter-drift ---- */
+.bg-aurora::after {
+  background:
+    radial-gradient(ellipse 55% 50% at 60% 40%, rgba(218, 191, 255, 0.06) 0%, transparent 65%),
+    radial-gradient(ellipse 45% 60% at 20% 70%, rgba(163, 91, 255, 0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 65% 35% at 80% 60%, rgba(118, 38, 251, 0.06) 0%, transparent 55%);
+  animation: aurora-counter var(--bg-duration-counter) ease-in-out infinite alternate;
+  mix-blend-mode: screen;
+}
+
+@keyframes aurora-drift {
+  0%   { transform: translate(0%, 0%) scale(1); }
+  25%  { transform: translate(3%, -2%) scale(1.02); }
+  50%  { transform: translate(-2%, 3%) scale(0.98); }
+  75%  { transform: translate(4%, 1%) scale(1.01); }
+  100% { transform: translate(-3%, -2%) scale(0.99); }
+}
+
+@keyframes aurora-counter {
+  0%   { transform: translate(0%, 0%) scale(1); }
+  33%  { transform: translate(-3%, 3%) scale(0.99); }
+  66%  { transform: translate(2%, -2%) scale(1.01); }
+  100% { transform: translate(-1%, 4%) scale(0.98); }
+}
+
+/* ---- Global background toggle ---- */
+[data-bg-aurora="off"] .bg-aurora,
+[data-bg-aurora="off"] > .bg-aurora {
+  opacity: 0 !important;
+  animation: none !important;
+}

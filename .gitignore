@@ -1,0 +1,16 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+*.swp
+*.swo
+*~
+
+# Tool config
+.atl/
+
+# Temp / test screenshots
+Prueba1.png
+Prueba2.png
+Prueba3.png

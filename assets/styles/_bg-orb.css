@@ -1,0 +1,68 @@
+/* ============================================
+   Ambient Orb Layer — Visual Depth System Layer 04
+   Highly blurred, slow-moving light pool
+   Sits between noise (3) and grid (5)
+   ============================================ */
+
+.bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  will-change: transform;
+  backface-visibility: hidden;
+  contain: strict;
+  z-index: var(--bg-z-orb, 4);
+  opacity: var(--bg-opacity-orb, 0.06);
+}
+
+/* ---- Orb positions ---- */
+.bg-orb.-orb-1 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(118, 38, 251, 0.10), transparent 70%);
+  top: -8%;
+  left: -10%;
+  animation: orb-drift-a var(--bg-duration-orb) ease-in-out infinite alternate;
+}
+
+.bg-orb.-orb-2 {
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(155, 92, 255, 0.08), transparent 70%);
+  bottom: -5%;
+  right: -8%;
+  animation: orb-drift-b var(--bg-duration-orb) ease-in-out infinite alternate;
+}
+
+.bg-orb.-orb-3 {
+  width: 240px;
+  height: 240px;
+  background: radial-gradient(circle, rgba(218, 191, 255, 0.06), transparent 70%);
+  top: 40%;
+  left: 60%;
+  animation: orb-drift-c var(--bg-duration-orb) ease-in-out infinite alternate;
+}
+
+/* ---- Drift keyframes ---- */
+@keyframes orb-drift-a {
+  0%   { transform: translate(0%, 0%) scale(1); }
+  100% { transform: translate(6%, 4%) scale(1.1); }
+}
+
+@keyframes orb-drift-b {
+  0%   { transform: translate(0%, 0%) scale(1); }
+  100% { transform: translate(-5%, -6%) scale(1.08); }
+}
+
+@keyframes orb-drift-c {
+  0%   { transform: translate(0%, 0%) scale(1); }
+  100% { transform: translate(4%, -3%) scale(1.05); }
+}
+
+/* ---- Toggle ---- */
+[data-bg-orb="off"] .bg-orb,
+[data-bg-orb="off"] > .bg-orb {
+  opacity: 0 !important;
+  animation: none !important;
+}

@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cormati centraliza ventas, soporte, BI, automatizaciones e IA en una sola plataforma.">
+  <meta property="og:title" content="Cormati — Opera todo en una sola plataforma">
+  <meta property="og:description" content="Tu empresa no necesita otra herramienta. Centraliza CRM, Service Desk, BI, automatizaciones e IA en una sola plataforma.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cormati.com">
+  <meta property="og:image" content="https://cormati.com/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%237626FB'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Inter,sans-serif' font-weight='800' font-size='20' fill='white'%3EC%3C/text%3E%3C/svg%3E">
+  <title>Cormati — Opera todo en una sola plataforma</title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/styles/tokens.css">
+  <link rel="stylesheet" href="assets/styles/reset.css">
+  <link rel="stylesheet" href="assets/styles/base.css">
+  <link rel="stylesheet" href="assets/styles/components.css">
+  <link rel="stylesheet" href="assets/styles/background-engine.css">
+  <link rel="stylesheet" href="assets/styles/utilities.css">
+</head>
+<body>
+  <!-- Ambient Background Layers — behind all content -->
+  <div class="bg-ambient" aria-hidden="true">
+    <div class="bg-aurora bg-layer"></div>
+    <div class="bg-orb -orb-1 bg-layer"></div>
+    <div class="bg-orb -orb-2 bg-layer"></div>
+    <div class="bg-orb -orb-3 bg-layer"></div>
+    <div class="bg-glow bg-layer"></div>
+  </div>
+  <!-- Noise overlay — subtle film grain above backgrounds -->
+  <div class="bg-noise-overlay" aria-hidden="true"></div>
+  <nav class="nav glass" aria-label="Navegación principal">
+    <div class="container nav-inner">
+      <a class="brand" href="#inicio" aria-label="Cormati, inicio">
+        <img src="assets/cormati-logo.svg" alt="Cormati">
+      </a>
+      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+      <div class="nav-links">
+        <a href="#problema">El problema</a>
+        <a href="#plataforma">La plataforma</a>
+        <a href="#ia">IA integrada</a>
+        <a href="#resultados">Resultados</a>
+      </div>
+      <a class="nav-cta" href="#demo">Solicita un diagnóstico →</a>
+    </div>
+  </nav>
+
+  <header id="inicio" class="section hero" data-bg-variant="hero" data-bg-transition>
+    <div class="bg-section-ambient" aria-hidden="true">
+      <div class="bg-aurora bg-layer"></div>
+      <div class="bg-glow bg-layer"></div>
+    </div>
+    <div class="section-grid -hero" aria-hidden="true"></div>
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <span class="eyebrow reveal reveal-1">Una operación. Una plataforma.</span>
+        <h1 class="reveal reveal-1">Muchos softwares.<br>Muchas licencias.<br><span class="gradient-text">Poco control.</span></h1>
+        <p class="lead reveal reveal-2">Tu empresa no necesita otra herramienta. Necesita dejar de operar como si cada área fuera una empresa distinta.</p>
+        <div class="hero-actions reveal reveal-3">
+          <a class="btn-primary" href="#demo">Empieza a operar en un solo lugar →</a>
+          <a class="btn-light glass" href="#plataforma">Descubre cómo funciona</a>
+        </div>
+      </div>
+      <div class="hero-visual reveal reveal-4">
+        <div class="os-frame glass">
+          <div class="os-panel">
+            <div class="os-indicator">
+              <span class="os-dot"></span>
+              <span>AI Operations</span>
+            </div>
+            <div class="os-card">
+              <div class="os-card-header">
+                <span class="os-badge os-badge-active"></span>
+                <span>AI Agent</span>
+              </div>
+              <span class="os-card-status">Active · 3 procesos</span>
+            </div>
+          </div>
+          <div class="os-divider" role="separator"></div>
+          <div class="os-panel">
+            <span class="os-panel-label">Connected Systems</span>
+            <div class="os-rows">
+              <div class="os-row"><span class="os-node">CRM</span><span class="os-connector"></span><span class="os-node os-node-accent">AI</span><span class="os-connector"></span><span class="os-node os-node-output">Revenue</span></div>
+              <div class="os-row"><span class="os-node">ERP</span><span class="os-connector"></span><span class="os-node os-node-accent">AI</span><span class="os-connector"></span><span class="os-node os-node-output">Insights</span></div>
+              <div class="os-row"><span class="os-node">API</span><span class="os-connector"></span><span class="os-node os-node-accent">AI</span><span class="os-connector"></span><span class="os-node os-node-output">Actions</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating Live Cards -->
+        <div class="live-card live-card--chat glass" aria-hidden="true">
+          <div class="lc-chat">
+            <div class="lc-chat-header">
+              <span class="lc-chat-icon">💬</span>
+              <span>WhatsApp</span>
+            </div>
+            <div class="lc-chat-body">
+              <div class="lc-msg lc-msg--client">Hola, necesito reagendar.</div>
+              <div class="lc-msg lc-msg--ai">Claro. ¿Mañana 10:30 AM?</div>
+              <div class="lc-msg lc-msg--client lc-msg--check">Perfecto 👍 <span class="lc-check">✓✓</span></div>
+              <div class="lc-typing" aria-label="Escribiendo">
+                <span class="lc-dot"></span>
+                <span class="lc-dot"></span>
+                <span class="lc-dot"></span>
+              </div>
+              <div class="lc-msg lc-msg--ai lc-msg--loop">Gracias por confirmar.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="live-card live-card--calendar glass" aria-hidden="true">
+          <div class="lc-cal">
+            <div class="lc-cal-header">July</div>
+            <div class="lc-cal-grid">
+              <span class="lc-cal-day">12</span>
+              <span class="lc-cal-day">13</span>
+              <span class="lc-cal-day">14</span>
+              <span class="lc-cal-day lc-cal-day--today">15</span>
+              <span class="lc-cal-day">16</span>
+              <span class="lc-cal-day">17</span>
+              <span class="lc-cal-day lc-cal-day--check">18</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="live-card live-card--notification glass" aria-hidden="true">
+          <div class="lc-notif">
+            <span class="lc-notif-icon">✓</span>
+            <span class="lc-notif-text">
+              <span class="lc-notif-line">Payment Approved</span>
+              <span class="lc-notif-line">Lead Assigned</span>
+              <span class="lc-notif-line">Email Sent</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="live-card live-card--status glass" aria-hidden="true">
+          <div class="lc-status">
+            <div class="lc-status-header">AI Workforce</div>
+            <div class="lc-status-row"><span class="lc-status-dot lc-dot--active"></span>Sales</div>
+            <div class="lc-status-row"><span class="lc-status-dot lc-dot--active"></span>Support</div>
+            <div class="lc-status-row"><span class="lc-status-dot lc-dot--active"></span>Finance</div>
+          </div>
+        </div>
+      </div>
+      <div class="trust-bar reveal reveal-3">
+        <span class="trust-item">★★★★★ 4.9/5</span>
+        <span class="trust-item">2,000+ empresas activas</span>
+        <span class="trust-item">Integración en 48h</span>
+      </div>
+    </div>
+</header>
+
+  <!-- ════════════════════════════════════
+       Story Continuity — Hero → Problem
+       Live Activity (izq) + AI Operating Core (der)
+       El dashboard del Hero "cobra vida"
+       ════════════════════════════════════ -->
+  <section class="section story" data-bg-variant="transition" aria-label="Actividad del sistema en vivo">
+    <div class="bg-section-ambient" aria-hidden="true">
+      <div class="bg-aurora bg-layer"></div>
+      <div class="bg-glow bg-layer"></div>
+    </div>
+
+    <div class="story-container">
+      <!-- Left: Live Activity Panel -->
+      <div class="story-panel story-panel--activity" aria-live="polite" aria-label="Actividad del sistema en tiempo real">
+        <div class="sp-header">
+          <span class="sp-badge">EN VIVO</span>
+          <h2 class="sp-title">Actividad del sistema</h2>
+        </div>
+
+        <div class="sp-feed" role="log" aria-label="Feed de actividad">
+          <article class="sp-item sp-item--enter" data-activity="connect">
+            <span class="sp-dot"></span>
+            <div class="sp-content">
+              <span class="sp-source">CRM</span>
+              <span class="sp-action">Nuevo lead sincronizado</span>
+              <span class="sp-meta">hace 2s</span>
+            </div>
+            <span class="sp-status sp-status--ok">✓</span>
+          </article>
+
+          <article class="sp-item sp-item--enter" data-activity="process" style="animation-delay: 150ms;">
+            <span class="sp-dot"></span>
+            <div class="sp-content">
+              <span class="sp-source">ERP</span>
+              <span class="sp-action">Orden de compra procesada</span>
+              <span class="sp-meta">hace 5s</span>
+            </div>
+            <span class="sp-status sp-status--ok">✓</span>
+          </article>
+
+          <article class="sp-item sp-item--enter" data-activity="analyze" style="animation-delay: 300ms;">
+            <span class="sp-dot"></span>
+            <div class="sp-content">
+              <span class="sp-source">Email</span>
+              <span class="sp-action">Clasificación automática completada</span>
+              <span class="sp-meta">hace 8s</span>
+            </div>
+            <span class="sp-status sp-status--ok">✓</span>
+          </article>
+
+          <article class="sp-item sp-item--enter" data-activity="respond" style="animation-delay: 450ms;">
+            <span class="sp-dot"></span>
+            <div class="sp-content">
+              <span class="sp-source">WhatsApp</span>
+              <span class="sp-action">Respuesta IA enviada al cliente</span>
+              <span class="sp-meta">hace 12s</span>
+            </div>
+            <span class="sp-status sp-status--ok">✓</span>
+          </article>
+
+          <article class="sp-item sp-item--enter" data-activity="compute" style="animation-delay: 600ms;">
+            <span class="sp-dot"></span>
+            <div class="sp-content">
+              <span class="sp-source">Excel</span>
+              <span class="sp-action">Reporte financiero generado</span>
+              <span class="sp-meta">hace 18s</span>
+            </div>
+            <span class="sp-status sp-status--ok">✓</span>
+          </article>
+
+          <article class="sp-item sp-item--enter" data-activity="sync" style="animation-delay: 750ms;">
+            <span class="sp-dot"></span>
+            <div class="sp-content">
+              <span class="sp-source">API</span>
+              <span class="sp-action">Webhook de inventario recibido</span>
+              <span class="sp-meta">hace 22s</span>
+            </div>
+            <span class="sp-status sp-status--ok">✓</span>
+          </article>
+
+          <article class="sp-item sp-item--enter" data-activity="query" style="animation-delay: 900ms;">
+            <span class="sp-dot"></span>
+            <div class="sp-content">
+              <span class="sp-source">Database</span>
+              <span class="sp-action">Consulta analítica ejecutada</span>
+              <span class="sp-meta">hace 28s</span>
+            </div>
+            <span class="sp-status sp-status--ok">✓</span>
+          </article>
+
+          <!-- Live typing indicator -->
+          <article class="sp-item sp-item--live" aria-hidden="true">
+            <span class="sp-dot sp-dot--pulse"></span>
+            <div class="sp-content">
+              <span class="sp-source">IA Agente</span>
+              <span class="sp-action sp-action--typing">Procesando solicitud<span class="sp-typing"><span>.</span><span>.</span><span>.</span></span></span>
+            </div>
+          </article>
+        </div>
+
+        <div class="sp-footer">
+          <span class="sp-stat">Procesados <strong>247</strong> eventos hoy</span>
+          <span class="sp-stat">Latencia <strong><50ms</strong></span>
+        </div>
+      </div>
+
+      <!-- Right: AI Operating Core -->
+      <div class="story-panel story-panel--core" aria-hidden="true">
+        <div class="sp-header">
+          <span class="sp-badge sp-badge--core">NÚCLEO IA</span>
+          <h2 class="sp-title">Operando</h2>
+        </div>
+
+        <div class="core-visual">
+          <!-- Outer glow ring -->
+          <div class="core-ring core-ring--1"></div>
+          <div class="core-ring core-ring--2"></div>
+          <div class="core-ring core-ring--3"></div>
+
+          <!-- Central core -->
+          <div class="core-center">
+            <div class="core-pulse"></div>
+            <div class="core-icon" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/>
+                <path d="M12 6v6l4 2"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Orbiting nodes - AI capabilities -->
+          <div class="core-orbit">
+            <div class="core-node core-node--sales" style="--angle: -135deg;">
+              <span class="core-node-dot"></span>
+              <span class="core-node-label">Ventas</span>
+            </div>
+            <div class="core-node core-node--support" style="--angle: -90deg;">
+              <span class="core-node-dot"></span>
+              <span class="core-node-label">Soporte</span>
+            </div>
+            <div class="core-node core-node--ops" style="--angle: -45deg;">
+              <span class="core-node-dot"></span>
+              <span class="core-node-label">Operaciones</span>
+            </div>
+            <div class="core-node core-node--finance" style="--angle: 0deg;">
+              <span class="core-node-dot"></span>
+              <span class="core-node-label">Finanzas</span>
+            </div>
+            <div class="core-node core-node--marketing" style="--angle: 45deg;">
+              <span class="core-node-dot"></span>
+              <span class="core-node-label">Marketing</span>
+            </div>
+            <div class="core-node core-node--analytics" style="--angle: 90deg;">
+              <span class="core-node-dot"></span>
+              <span class="core-node-label">Analytics</span>
+            </div>
+          </div>
+
+          <!-- Particle streams connecting nodes to center -->
+          <div class="core-streams" aria-hidden="true"></div>
+        </div>
+
+        <div class="core-metrics">
+          <div class="core-metric">
+            <span class="core-metric-value" data-count="847">0</span>
+            <span class="core-metric-label">Decisiones/min</span>
+          </div>
+          <div class="core-metric">
+            <span class="core-metric-value" data-count="99.2">0</span>
+            <span class="core-metric-label">Precisión %</span>
+          </div>
+          <div class="core-metric">
+            <span class="core-metric-value" data-count="12">0</span>
+            <span class="core-metric-label">Agentes activos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="problema" class="section problem" data-bg-variant="light" data-bg-transition>
+    <div class="bg-section-ambient" aria-hidden="true">
+      <div class="bg-aurora bg-layer"></div>
+      <div class="bg-glow bg-layer"></div>
+    </div>
+    <div class="container problem-grid">
+      <div data-reveal>
+        <span class="eyebrow purple">El costo de la fragmentación</span>
+        <h2>Cada nuevo problema termina convertido en <span class="purple">otro software.</span></h2>
+        <p class="lead">Ventas por un lado. Soporte por otro. Reportes en otra plataforma. Automatizaciones que dependen de conectores, licencias y mantenimiento.</p>
+        <div class="problem-cards">
+          <article class="problem-card">
+            <div class="icon-box">01</div><div><h3>Datos dispersos</h3><p>La información vive en demasiados lugares y rara vez cuenta la misma historia.</p></div>
+          </article>
+          <article class="problem-card">
+            <div class="icon-box">02</div><div><h3>Decisiones lentas</h3><p>Antes de actuar, tus equipos tienen que buscar, cruzar y validar información.</p></div>
+          </article>
+          <article class="problem-card">
+            <div class="icon-box">03</div><div><h3>Costos que se multiplican</h3><p>Más licencias, integraciones, tokens, mantenimiento y dependencia de terceros.</p></div>
+          </article>
+        </div>
+      </div>
+      <figure class="media-card problem-visual" data-reveal>
+        <img src="assets/fragmentacion-vs-cormati.png" alt="Comparación visual entre una operación fragmentada y Cormati" loading="lazy">
+      </figure>
+    </div>
+  </section>
+
+  <section id="plataforma" class="section platform" data-bg-variant="dark" data-bg-transition>
+    <div class="bg-section-ambient" aria-hidden="true">
+      <div class="bg-aurora bg-layer"></div>
+      <div class="bg-glow bg-layer"></div>
+    </div>
+    <div class="section-grid -platform" aria-hidden="true"></div>
+    <div class="container platform-grid">
+      <div data-reveal>
+        <span class="eyebrow">El modelo Cormati</span>
+        <h2>Una plataforma que se adapta a <span class="gradient-text">cómo opera tu empresa.</span></h2>
+        <p class="lead">No obligues a todas tus áreas a trabajar igual. Conecta procesos, automatiza tareas y crea módulos alrededor de tu operación real.</p>
+        <div class="chip-strip">
+          <span class="chip"><span class="chip-status -active"></span><span class="chip-label">CRM activo</span></span>
+          <span class="chip"><span class="chip-status -active"></span><span class="chip-label">Service Desk activo</span></span>
+          <span class="chip"><span class="chip-status -warning"></span><span class="chip-label">BI en inicialización</span></span>
+        </div>
+        <div class="module-grid">
+          <article class="module-card glass"><div class="icon-box">↗</div><h3>CRM</h3><p>Prospectos, pipeline, seguimiento y automatización comercial.</p></article>
+          <article class="module-card glass"><div class="icon-box">◎</div><h3>Service Desk</h3><p>Solicitudes, tickets, SLA, atención y trazabilidad interna.</p></article>
+          <article class="module-card glass"><div class="icon-box">▥</div><h3>BI</h3><p>Indicadores, tableros y decisiones con información en tiempo real.</p></article>
+          <article class="module-card glass"><div class="icon-box">✦</div><h3>Apps + IA</h3><p>Automatizaciones y asistentes que ejecutan dentro de tu operación.</p></article>
+        </div>
+      </div>
+      <figure class="media-card platform-visual" data-reveal>
+        <img src="assets/software-cormati.png" alt="Pantallas demostrativas de CRM, BI, Service Desk e IA" loading="lazy">
+      </figure>
+    </div>
+  </section>
+
+  <section id="ia" class="section ai" data-bg-variant="light" data-bg-transition>
+    <div class="bg-section-ambient" aria-hidden="true">
+      <div class="bg-aurora bg-layer"></div>
+      <div class="bg-glow bg-layer"></div>
+    </div>
+    <div class="container ai-grid">
+      <figure class="media-card ai-visual" data-reveal>
+        <img src="assets/operacion-comercial.jpg" alt="Profesional consultando su operación comercial" loading="lazy">
+      </figure>
+      <div data-reveal>
+        <span class="eyebrow purple">Inteligencia integrada</span>
+        <h2>La IA no debería vivir en <span class="purple">una pestaña aparte.</span></h2>
+        <p class="lead">Cuando tus datos, procesos y equipos viven en el mismo sistema, la IA deja de limitarse a responder preguntas y comienza a ejecutar contigo.</p>
+        <div class="chat" aria-label="Ejemplo de conversación con Mati">
+          <div class="chat-head"><div class="chat-avatar">M</div><div><strong>Mati</strong><div class="status">● Agente de IA de Cormati</div></div></div>
+          <div class="bubble bot">Detecté 18 oportunidades sin seguimiento durante las últimas 48 horas. ¿Quieres que priorice las de mayor probabilidad de cierre?</div>
+          <div class="bubble user">Sí. Asígnalas y prepara un resumen para el equipo comercial.</div>
+          <div class="bubble bot">Listo. Reorganicé el pipeline, asigné responsables y generé el reporte ejecutivo.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="resultados" class="section results" data-bg-variant="light" data-bg-transition>
+    <div class="bg-section-ambient" aria-hidden="true">
+      <div class="bg-aurora bg-layer"></div>
+      <div class="bg-glow bg-layer"></div>
+    </div>
+    <div class="container">
+      <div class="max-w-820" data-reveal>
+        <span class="eyebrow purple">El resultado</span>
+        <h2>Cormati no es otro costo de software.<br><span class="purple">Es una forma más inteligente de operar.</span></h2>
+        <p class="lead">Menos trabajo repetitivo, menos herramientas duplicadas y más visibilidad para crecer, retener y ejecutar mejor.</p>
+      </div>
+      <div class="stats">
+        <article class="stat card-premium" data-reveal><strong>01</strong><h3>Crece</h3><p>Captura oportunidades, responde más rápido y automatiza el seguimiento.</p></article>
+        <article class="stat card-premium" data-reveal><strong>02</strong><h3>Retén</h3><p>Entrega experiencias más rápidas, personalizadas y consistentes.</p></article>
+        <article class="stat card-premium" data-reveal><strong>03</strong><h3>Reduce</h3><p>Elimina trabajo repetitivo, plataformas duplicadas y procesos innecesarios.</p></article>
+        <article class="stat card-premium" data-reveal><strong>04</strong><h3>Controla</h3><p>Consulta datos y procesos desde una sola fuente de verdad.</p></article>
+      </div>
+      <div class="case-card" data-reveal>
+        <div class="case-image"><img src="assets/im.png" alt="Ejemplo visual del sistema unificado de Cormati" loading="lazy"></div>
+        <div class="case-copy">
+          <span class="eyebrow purple">Todo conectado</span>
+          <h2>Una sola plataforma.<br>Una sola operación.</h2>
+          <div class="case-list">
+            <div><span class="check">✓</span><span>Una fuente de verdad para ventas, soporte, reportes y automatizaciones.</span></div>
+            <div><span class="check">✓</span><span>IA dentro de los procesos, no aislada de ellos.</span></div>
+            <div><span class="check">✓</span><span>Menos licencias, menos conectores y menos fricción operativa.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="demo" class="section cta" data-bg-variant="cta" data-bg-transition>
+    <div class="bg-section-ambient" aria-hidden="true">
+      <div class="bg-aurora bg-layer"></div>
+      <div class="bg-glow bg-layer"></div>
+    </div>
+    <div class="section-grid -cta" aria-hidden="true"></div>
+    <div class="container cta-box" data-reveal>
+      <span class="eyebrow">Diagnóstico de arquitectura</span>
+      <h2>¿Cuánto software podría dejar de necesitar tu empresa?</h2>
+      <p class="lead">Trae tu operación más compleja, tu flujo más manual o el proceso que más se fragmenta. Descubre cómo podría funcionar dentro de una sola plataforma.</p>
+      <div class="cta-actions">
+        <a class="btn-primary" href="mailto:hello@cormati.com?subject=Quiero%20un%20diagnóstico%20de%20Cormati">Solicita una revisión de arquitectura →</a>
+        <a class="btn-light glass" href="#inicio">Volver al inicio</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo"><img src="assets/cormati-logo.svg" alt="Cormati"></div>
+          <p>Cormati unifica ventas, soporte, BI, automatizaciones e IA en una sola plataforma. Una fuente de verdad para tu operación.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Producto</h4>
+          <a href="#plataforma">CRM</a>
+          <a href="#plataforma">Service Desk</a>
+          <a href="#plataforma">BI</a>
+          <a href="#ia">IA integrada</a>
+          <a href="#resultados">Resultados</a>
+        </div>
+        <div class="footer-col">
+          <h4>Compañía</h4>
+          <a href="#demo">Diagnóstico</a>
+          <a href="mailto:hello@cormati.com">Contacto</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="#">Privacidad</a>
+          <a href="#">Términos</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>© 2026 Cormati. Todos los derechos reservados.</div>
+        <div class="footer-socials">
+          <a href="https://www.facebook.com/cormati/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg></a>
+          <a href="https://www.instagram.com/cormatimx/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+          <a href="https://www.tiktok.com/@cormatimx" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
+          <a href="https://www.linkedin.com/company/cormati/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+          <a href="https://www.youtube.com/@Cormati" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+
+  <a class="wa-float" href="https://wa.me/5214424498026" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</body>
+</html>

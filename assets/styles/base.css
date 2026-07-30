@@ -1,0 +1,227 @@
+/* ============================================
+   base.css — Base Elements & Typography
+   Depends on: tokens.css
+   ============================================ */
+
+/* ---- Body ---- */
+body {
+  font-size: var(--font-body);
+  line-height: var(--leading-normal);
+  color: var(--color-neutral-900);
+  background: var(--color-white);
+  font-family: var(--font-family);
+  font-feature-settings: "liga" 1, "calt" 1;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ---- Layout ---- */
+.container {
+  width: min(1180px, calc(100% - 32px));
+  margin-inline: auto;
+}
+
+.section {
+  position: relative;
+  padding: var(--space-8) 0;
+  overflow: hidden;
+  scroll-margin-top: 72px;
+}
+
+/* ---- Typography ---- */
+h1, h2, h3, p {
+  margin-top: 0;
+}
+
+h1 {
+  font-size: var(--font-display);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--letter-spacing-tighter);
+  margin-bottom: 20px;
+  font-weight: var(--weight-black);
+}
+
+h2 {
+  font-size: var(--font-h2);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  margin-bottom: 18px;
+  font-weight: var(--weight-bold);
+}
+
+h3 {
+  font-size: var(--font-h3);
+  line-height: var(--leading-normal);
+  margin-bottom: 8px;
+  font-weight: var(--weight-semibold);
+}
+
+.lead {
+  font-size: clamp(0.95rem, 2.5vw, 1.08rem);
+  line-height: var(--leading-relaxed);
+  color: var(--color-neutral-500);
+}
+
+/* ---- Eyebrow ---- */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--font-small);
+  font-weight: var(--weight-black);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 22px;
+  height: 2px;
+  background: currentColor;
+  border-radius: var(--radius-pill);
+}
+
+/* ---- Color helpers ---- */
+.purple {
+  color: var(--color-primary-500);
+}
+
+.gradient-text {
+  color: transparent;
+  background: linear-gradient(90deg, var(--color-primary-500) 0%, #9B5CFF 55%, var(--color-purple-200) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* ---- Background container ---- */
+.bg-ambient {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  contain: strict;
+  overflow: hidden;
+}
+
+/* ---- Keyframes ---- */
+@keyframes drift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(118, 38, 251, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(118, 38, 251, 0.5); }
+}
+
+@keyframes hero-fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- Scroll reveal ---- */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(var(--reveal-offset));
+  transition:
+    opacity var(--reveal-duration) var(--ease-enter),
+    transform var(--reveal-duration) var(--ease-enter);
+}
+
+[data-reveal].visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---- Reduced motion: disable all ambient/decorative motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  /* Ambient layers: hide and stop all animation */
+  .bg-ambient .bg-aurora,
+  .bg-ambient .bg-aurora::before,
+  .bg-ambient .bg-aurora::after,
+  .bg-section-ambient .bg-aurora,
+  .bg-section-ambient .bg-aurora::before,
+  .bg-section-ambient .bg-aurora::after,
+  .bg-ambient .bg-glow,
+  .bg-ambient .bg-glow::before,
+  .bg-ambient .bg-glow::after,
+  .bg-section-ambient .bg-glow,
+  .bg-section-ambient .bg-glow::before,
+  .bg-section-ambient .bg-glow::after {
+    animation: none !important;
+    opacity: 0 !important;
+  }
+
+  /* OS float */
+  .os-frame {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  /* Ambient orbs */
+  .bg-orb {
+    animation: none !important;
+    opacity: 0 !important;
+  }
+
+  /* Grid drift */
+  .bg-grid.-live,
+  .bg-grid.-flat.-live {
+    animation: none !important;
+    opacity: 0 !important;
+  }
+
+  .hero,
+  .cta {
+    animation: none !important;
+    background-size: 100% 100% !important;
+  }
+
+  /* CTA button glow pulse */
+  .cta .btn-primary {
+    animation: none !important;
+  }
+
+  /* Scroll reveal: show immediately without animation */
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* Premium card hover: disable lift */
+  .card-premium:hover {
+    transform: none !important;
+  }
+
+  /* Glass hover effects: disable float/scale */
+  .glass-floating:hover {
+    transform: none !important;
+  }
+
+  .glass-interactive:hover {
+    transform: none !important;
+  }
+
+  /* Hover transforms on cards/buttons: disable scale motion */
+  .media-card:hover,
+  .nav-cta:hover,
+  .btn-primary:hover,
+  .btn-light:hover,
+  .os-card:hover,
+  .os-row:hover,
+  .problem-card:hover,
+  .compare-card:hover,
+  .module-card:hover,
+  .stat:hover,
+  .case-card:hover,
+  .wa-float:hover,
+  .chip:hover {
+    transform: none !important;
+  }
+}

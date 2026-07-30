@@ -1,0 +1,10 @@
+/* ============================================
+   Background Engine — Layer Reference
+   All tokens (z-index, opacity, duration, easing)
+   are defined once in tokens.css — the single
+   source of truth for global design tokens.
+
+   Layer ordering (z-index):
+   Gradient (1) → Aurora (2) → Noise (3) →
+   Orb (4) → Grid (5) → Particles (6) → Glow (7)
+   ============================================ */

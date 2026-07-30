@@ -1,0 +1,15 @@
+/* ============================================
+   Background Engine — Main Entry Point
+   Visual Depth System v1.0
+   Layers follow the Depth System ordering
+   ============================================ */
+
+@import url("_bg-variables.css");
+@import url("_bg-layers.css");
+@import url("_bg-gradient.css");
+@import url("_bg-aurora.css");
+@import url("_bg-noise.css");
+@import url("_bg-orb.css");
+@import url("_bg-grid.css");
+@import url("_bg-particles.css");
+@import url("_bg-glow.css");

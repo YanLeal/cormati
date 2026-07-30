@@ -1,0 +1,195 @@
+/* ============================================
+   tokens.css — Design Tokens v1
+   Single source of truth for all CSS variables
+   ============================================ */
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/Inter-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/Inter-Variable-Italic.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  /* =========================================
+     Color Tokens
+     ========================================= */
+  --color-primary-500:  #7626FB;
+  --color-primary-600:  #5E1BD6;
+
+  --color-purple-100:   #EDE3FF;
+  --color-purple-200:   #D7C4FF;
+  --color-purple-300:   #B794FF;
+
+  --color-neutral-50:   #FAFAFA;
+  --color-neutral-100:  #F5F5F7;
+  --color-neutral-300:  #D8D5DD;
+  --color-neutral-500:  #77717F;
+  --color-neutral-700:  #3A3442;
+  --color-neutral-900:  #202020;
+
+  --color-white:        #FFFFFF;
+  --color-black:        #000000;
+
+  --color-success:      #4BA95E;
+  --color-whatsapp:     #25D366;
+
+  /* =========================================
+     Spacing Tokens
+     ========================================= */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-7:  48px;
+  --space-8:  64px;
+  --space-9:  96px;
+
+  /* =========================================
+     Radius Tokens
+     ========================================= */
+  --radius-sm:   12px;
+  --radius-md:   18px;
+  --radius-lg:   28px;
+  --radius-xl:   38px;
+  --radius-pill: 999px;
+
+  /* =========================================
+     Shadow Tokens
+     ========================================= */
+  --shadow-sm:          0 8px 24px rgba(0, 0, 0, 0.06);
+  --shadow-card:        0 14px 44px rgba(31, 20, 48, 0.08);
+  --shadow-glass:       0 24px 70px rgba(11, 0, 37, 0.25);
+  --shadow-hover:       0 32px 100px rgba(77, 25, 158, 0.20);
+
+  --shadow-btn:         0 10px 30px rgba(118, 38, 251, 0.24);
+  --shadow-btn-hover:   0 20px 44px rgba(118, 38, 251, 0.40);
+  --shadow-card-hover:  0 20px 48px rgba(118, 38, 251, 0.12);
+  --shadow-card-alt:    0 16px 50px rgba(89, 25, 173, 0.1);
+  --shadow-card-alt-hover: 0 24px 70px rgba(89, 25, 173, 0.18);
+  --shadow-module-dark: 0 20px 48px rgba(0, 0, 0, 0.25);
+  --shadow-glow:       0 0 20px rgba(118, 38, 251, 0.35);
+  --shadow-wa:         0 6px 24px rgba(37, 211, 102, 0.36);
+  --shadow-wa-hover:   0 10px 32px rgba(37, 211, 102, 0.48);
+  --shadow-wa-badge:   0 0 14px #D0FF85;
+
+  /* =========================================
+     Typography
+     ========================================= */
+  --font-family:  "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono:    "SF Mono", "Cascadia Code", "Fira Code", monospace;
+
+  --font-display: clamp(3rem, 6vw, 6rem);
+  --font-h2:      clamp(2rem, 4vw, 4rem);
+  --font-h3:      1.25rem;
+  --font-body:    1rem;
+  --font-small:   .875rem;
+
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+  --weight-black:    800;
+
+  --leading-tight:   .98;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.7;
+
+  --letter-spacing-wide:    0.08em;
+  --letter-spacing-wider:   0.16em;
+  --letter-spacing-tight:   -0.03em;
+  --letter-spacing-tighter: -0.04em;
+  --letter-spacing-tightest: -0.05em;
+
+  /* =========================================
+     Motion — Duration Tokens
+     ========================================= */
+  --duration-fast:    150ms;
+  --duration-normal:  300ms;
+  --duration-slow:    600ms;
+  --duration-orbit:   6000ms;
+  --duration-ambient: 30000ms;
+  --duration-pulse:   3s;
+
+  /* =========================================
+     Motion — Easing Tokens
+     ========================================= */
+  --ease-default:  ease;
+  --ease-out:      cubic-bezier(.22, 1, .36, 1);
+  --ease-spring:   cubic-bezier(.34, 1.56, .64, 1);
+  --ease-enter:    cubic-bezier(0, 0, 0, 1);
+
+  /* =========================================
+     Scroll Reveal (Motion System §6, §9)
+     ========================================= */
+  --reveal-stagger:  80ms;
+  --reveal-wave-gap: 400ms;
+  --reveal-duration: 600ms;
+  --reveal-offset:   24px;
+
+  /* =========================================
+     Motion Choreography — Delay Tokens
+     ========================================= */
+  --delay-short:   100ms;
+  --delay-medium:  200ms;
+  --delay-long:    400ms;
+
+  /* =========================================
+     Staggered Entrance — Delay Tokens
+     Sequence: bg → glow → visual → content
+     ========================================= */
+  --delay-bg:      0ms;
+  --delay-glow:    200ms;
+  --delay-visual:  400ms;
+  --delay-visual-inner:  480ms;
+  --delay-content: 550ms;
+
+  /* =========================================
+     Background Engine — Base intensities
+     These are overridden by per-section variants
+     ========================================= */
+  --bg-z-gradient:  1;
+  --bg-z-aurora:    2;
+  --bg-z-noise:     3;
+  --bg-z-orb:       4;
+  --bg-z-grid:      5;
+  --bg-z-particles: 6;
+  --bg-z-glow:      7;
+
+  --bg-opacity-gradient:  1;
+  --bg-opacity-aurora:    0.10;
+  --bg-opacity-glow:      0.08;
+  --bg-opacity-orb:       0.06;
+  --bg-opacity-noise:     0.035;
+  --bg-opacity-grid:      0.06;
+  --bg-opacity-particles: 0.5;
+
+  --bg-duration-slow:    45s;
+  --bg-duration-medium:  25s;
+  --bg-duration-hero:    20s;
+  --bg-duration-orb:     35s;
+  --bg-duration-counter: 55s;
+  --bg-duration-glow-a:  16s;
+  --bg-duration-glow-b:  22s;
+  --bg-duration-grid:    60s;
+  --bg-duration-grid-flat: 80s;
+  --bg-duration-noise:  120s;
+  --bg-easing:          ease-in-out;
+
+  /* =========================================
+     Glass Component
+     ========================================= */
+  --glass-bg:     rgba(255, 255, 255, .08);
+  --glass-border: rgba(255, 255, 255, .18);
+  --glass-blur:   16px;
+}

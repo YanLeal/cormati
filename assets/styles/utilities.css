@@ -1,0 +1,47 @@
+/* ============================================
+   utilities.css — Utility Classes
+   ============================================ */
+
+/* ---- Text alignment ---- */
+.text-center { text-align: center; }
+.text-left   { text-align: left; }
+.text-right  { text-align: right; }
+
+/* ---- Display ---- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* ---- Max widths ---- */
+.max-w-820 { max-width: 820px; }
+
+/* ---- Motion Choreography — Reveal System ---- */
+.reveal {
+  animation: hero-fade-up 600ms var(--ease-out) var(--delay) both;
+}
+
+.reveal-1 { --delay: var(--delay-short); }
+.reveal-2 { --delay: var(--delay-medium); }
+.reveal-3 { --delay: var(--delay-long); }
+.reveal-4 { --delay: calc(var(--delay-long) + var(--delay-medium)); }
+
+/* ---- Reduced motion safety ---- */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .anim-enabled-only {
+    animation: none !important;
+    transition: none !important;
+  }
+}

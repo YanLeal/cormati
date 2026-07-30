@@ -1,0 +1,68 @@
+/* ============================================
+   Infinite Grid — Visual Depth System Layer 04
+   Soft perspective, low opacity, reusable
+   Integrates with Aurora
+   ============================================ */
+
+.bg-grid {
+  z-index: var(--bg-z-grid, 4);
+  opacity: var(--bg-opacity-grid, 0.06);
+  perspective: 600px;
+  overflow: hidden;
+}
+
+.bg-grid > .bg-grid-surface {
+  position: absolute;
+  inset: -50% -25% 0 -25%;
+  top: -20%;
+  transform: rotateX(65deg);
+  transform-origin: center bottom;
+  background-image:
+    repeating-linear-gradient(
+      to right,
+      transparent,
+      transparent 48px,
+      rgba(118, 38, 251, 0.08) 48px,
+      rgba(118, 38, 251, 0.08) 49px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent 48px,
+      rgba(118, 38, 251, 0.08) 48px,
+      rgba(118, 38, 251, 0.08) 49px
+    );
+  mask-image: linear-gradient(to top, rgba(0,0,0,0.3) 10%, transparent 70%);
+  -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,0.3) 10%, transparent 70%);
+  will-change: transform;
+}
+
+/* ---- Subtle drift ---- */
+.bg-grid.-live > .bg-grid-surface {
+  animation: grid-drift var(--bg-duration-grid) linear infinite;
+}
+
+@keyframes grid-drift {
+  from { transform: rotateX(65deg) translateY(0); }
+  to   { transform: rotateX(65deg) translateY(24px); }
+}
+
+/* ---- Full 2D grid (no perspective) ---- */
+.bg-grid.-flat {
+  perspective: none;
+}
+.bg-grid.-flat > .bg-grid-surface {
+  inset: 0;
+  transform: none;
+  transform-origin: initial;
+  mask-image: linear-gradient(to bottom, transparent 5%, rgba(0,0,0,0.5) 40%, transparent 95%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 5%, rgba(0,0,0,0.5) 40%, transparent 95%);
+}
+.bg-grid.-flat.-live > .bg-grid-surface {
+  animation: grid-drift-flat var(--bg-duration-grid-flat) linear infinite;
+}
+
+@keyframes grid-drift-flat {
+  from { transform: translateY(0); }
+  to   { transform: translateY(48px); }
+}

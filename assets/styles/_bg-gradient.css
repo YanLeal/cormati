@@ -1,0 +1,4 @@
+.bg-gradient {
+  z-index: var(--bg-z-gradient, 1);
+  opacity: var(--bg-opacity-gradient, 1);
+}

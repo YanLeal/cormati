@@ -910,65 +910,377 @@ footer {
 }
 
 /* ============================================
-   Floating Live Cards — Orbital Halo
-   Each card orbits the dashboard on a 15s
-   lifecycle. Max 2 visible at once.
+   Hero Live Activity Layer
+   Cards orbit the OS dashboard with content
+   that cycles to convey "the platform is
+   working." Every card uses .glass for the
+   base appearance.
    ============================================ */
 
 .live-card {
   position: absolute;
   z-index: 5;
   pointer-events: none;
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
 }
 
-/* ── Lifecycle Keyframes (15s cycle) ──
-   Enter:   fade in + translateY(12→0) + scale(0.97→1)
-   Visible: hold
-   Exit:    fade out + translateY(0→-8)
-   Hidden:  opacity 0
-   ───────────────────────────────────────── */
+/* ── Sizes ── */
+.live-card--chat         { width: 200px; }
+.live-card--calendar     { width: 170px; }
+.live-card--notification { width: 150px; }
+.live-card--status       { width: 155px; }
 
-/* Notification: visible 1.5s–3.0s */
-@keyframes lc-lifecycle--notification {
-  0%, 9%   { opacity: 0; transform: translateY(12px) scale(0.97); }
-  10%, 11% { opacity: 1; transform: translateY(0)    scale(1); }
-  12%, 18% { opacity: 1; transform: translateY(0)    scale(1); }
-  19%, 20% { opacity: 0; transform: translateY(-8px) scale(0.97); }
-  21%, 100%{ opacity: 0; transform: translateY(-8px) scale(0.97); }
+/* ── Desktop Positions ──
+   Cards orbit the OS frame. Offsets keep them
+   near the frame edges without overlapping. */
+@media (min-width: 640px) {
+  .live-card--chat         { top: -12px;  right: 8px;  }
+  .live-card--calendar     { bottom: 4px; left: 0;     }
+  .live-card--notification { top: 18px;   left: 4px;   }
+  .live-card--status       { bottom: 4px; right: 8px;  }
 }
 
-/* WhatsApp: visible 4.0s–10.5s */
-@keyframes lc-lifecycle--chat {
-  0%, 25%  { opacity: 0; transform: translateY(12px) scale(0.97); }
-  26%, 27% { opacity: 1; transform: translateY(0)    scale(1); }
-  28%, 68% { opacity: 1; transform: translateY(0)    scale(1); }
-  69%, 70% { opacity: 0; transform: translateY(-8px) scale(0.97); }
-  71%, 100%{ opacity: 0; transform: translateY(-8px) scale(0.97); }
+/* ════════════════════════════════════════════
+   Card 1 — WhatsApp Conversation (8s cycle)
+   Messages appear sequentially; typing
+   indicator between AI responses.
+   ════════════════════════════════════════════ */
+
+/* All messages share: fade+slide in, hold, fade out */
+@keyframes lc-msg-cycle {
+  0%, 8%   { opacity: 0; transform: translateY(8px); }
+  12%, 65% { opacity: 1; transform: translateY(0); }
+  70%, 100%{ opacity: 0; transform: translateY(-4px); }
 }
 
-/* Calendar: visible 7.5s–11.5s (overlaps WhatsApp 7.5s–10.5s) */
-@keyframes lc-lifecycle--calendar {
-  0%, 49%  { opacity: 0; transform: translateY(12px) scale(0.97); }
-  50%, 51% { opacity: 1; transform: translateY(0)    scale(1); }
-  52%, 75% { opacity: 1; transform: translateY(0)    scale(1); }
-  76%, 77% { opacity: 0; transform: translateY(-8px) scale(0.97); }
-  78%, 100%{ opacity: 0; transform: translateY(-8px) scale(0.97); }
+/* Typing indicator: short visible window */
+@keyframes lc-typing-vis {
+  0%, 40%  { opacity: 0; }
+  44%, 58% { opacity: 1; }
+  62%, 100%{ opacity: 0; }
 }
 
-/* AI Workforce: visible 11.5s–14.0s (brief overlap with Calendar exit) */
-@keyframes lc-lifecycle--status {
-  0%, 75%  { opacity: 0; transform: translateY(12px) scale(0.97); }
-  76%, 77% { opacity: 1; transform: translateY(0)    scale(1); }
-  78%, 92% { opacity: 1; transform: translateY(0)    scale(1); }
-  93%, 94% { opacity: 0; transform: translateY(-8px) scale(0.97); }
-  95%, 100%{ opacity: 0; transform: translateY(-8px) scale(0.97); }
+/* AI final message */
+@keyframes lc-msg-last {
+  0%, 56%  { opacity: 0; transform: translateY(8px); }
+  60%, 70% { opacity: 1; transform: translateY(0); }
+  75%, 100%{ opacity: 0; transform: translateY(-4px); }
 }
 
-/* Assign each card its lifecycle */
-.live-card--notification { animation: lc-lifecycle--notification 15s ease-in-out infinite both; }
-.live-card--chat         { animation: lc-lifecycle--chat         15s ease-in-out infinite both; }
-.live-card--calendar     { animation: lc-lifecycle--calendar     15s ease-in-out infinite both; }
-.live-card--status       { animation: lc-lifecycle--status       15s ease-in-out infinite both; }
+/* Double checkmark fades in with its message */
+@keyframes lc-check-in {
+  0%, 30%  { opacity: 0; }
+  35%, 100%{ opacity: 1; }
+}
+
+/* Assign animations by child position (chat body structure is fixed) */
+.lc-chat-body > :nth-child(1)                     { animation: lc-msg-cycle  8s ease-in-out infinite; }
+.lc-chat-body > :nth-child(2)                     { animation: lc-msg-cycle  8s ease-in-out infinite;
+                                                     animation-delay: 1.2s; }
+.lc-chat-body > :nth-child(3)                     { animation: lc-msg-cycle  8s ease-in-out infinite;
+                                                     animation-delay: 2.4s; }
+.lc-chat-body > :nth-child(3) .lc-check           { animation: lc-check-in   8s ease-in-out infinite; }
+.lc-chat-body > :nth-child(4)                     { animation: lc-typing-vis 8s ease-in-out infinite; }
+.lc-chat-body > :nth-child(5)                     { animation: lc-msg-last   8s ease-in-out infinite; }
+
+/* Typing dots bounce continuously */
+@keyframes lc-dot-bounce {
+  0%, 60%, 100% { transform: translateY(0);    opacity: 0.3; }
+  30%           { transform: translateY(-5px);  opacity: 1; }
+}
+.lc-typing .lc-dot {
+  display: inline-block;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: lc-dot-bounce 1.4s ease-in-out infinite;
+}
+.lc-typing .lc-dot:nth-child(2) { animation-delay: 0.2s; }
+.lc-typing .lc-dot:nth-child(3) { animation-delay: 0.4s; }
+
+/* ════════════════════════════════════════════
+   Card 2 — Calendar (7s cycle)
+   Days highlight in sequence — "AI is
+   organizing the schedule."
+   ════════════════════════════════════════════ */
+
+@keyframes lc-cal-check {
+  0%, 6%   { opacity: 0.35; transform: scale(1);    filter: none; }
+  8%, 16%  { opacity: 1;    transform: scale(1.15);  filter: brightness(1.4); }
+  18%, 100%{ opacity: 0.35; transform: scale(1);    filter: none; }
+}
+
+.lc-cal-day           { transition: none; }
+.lc-cal-day--today    { opacity: 1; color: var(--color-white); font-weight: var(--weight-bold); }
+
+/* Each day gets staggered delay in the 7s cycle */
+.lc-cal-day:nth-child(1) { animation: lc-cal-check 7s ease-in-out infinite 0s; }
+.lc-cal-day:nth-child(2) { animation: lc-cal-check 7s ease-in-out infinite 0.4s; }
+.lc-cal-day:nth-child(3) { animation: lc-cal-check 7s ease-in-out infinite 0.8s; }
+.lc-cal-day:nth-child(4) { animation: lc-cal-check 7s ease-in-out infinite 1.2s; }
+.lc-cal-day:nth-child(5) { animation: lc-cal-check 7s ease-in-out infinite 1.6s; }
+.lc-cal-day:nth-child(6) { animation: lc-cal-check 7s ease-in-out infinite 2.0s; }
+.lc-cal-day:nth-child(7) { animation: lc-cal-check 7s ease-in-out infinite 2.4s; }
+
+/* ════════════════════════════════════════════
+   Card 3 — Notification (6s cycle)
+   Text lines cycle — each line shows briefly
+   then the next appears.
+   ════════════════════════════════════════════ */
+
+@keyframes lc-notif-cycle {
+  0%, 18%  { opacity: 0; transform: translateY(4px); }
+  22%, 38% { opacity: 1; transform: translateY(0); }
+  42%, 100%{ opacity: 0; transform: translateY(-3px); }
+}
+
+.lc-notif-text > .lc-notif-line:nth-child(1) { animation: lc-notif-cycle 6s ease-in-out infinite 0s; }
+.lc-notif-text > .lc-notif-line:nth-child(2) { animation: lc-notif-cycle 6s ease-in-out infinite 2s; }
+.lc-notif-text > .lc-notif-line:nth-child(3) { animation: lc-notif-cycle 6s ease-in-out infinite 4s; }
+
+/* ════════════════════════════════════════════
+   Card 4 — AI Agent Status (continuous pulse)
+   Status dots pulse to show active agents.
+   ════════════════════════════════════════════ */
+
+@keyframes lc-status-pulse {
+  0%, 100% { opacity: 1;    transform: scale(1);    box-shadow: 0 0 6px  rgba(208,255,133,0.5); }
+  50%      { opacity: 0.6;  transform: scale(0.8);  box-shadow: 0 0 12px rgba(208,255,133,0.2); }
+}
+
+.lc-dot--active {
+  display: inline-block;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #D0FF85;
+  box-shadow: 0 0 6px rgba(208,255,133,0.5);
+  animation: lc-status-pulse 2s ease-in-out infinite;
+}
+.lc-status-row:nth-child(2) .lc-dot--active { animation-delay: 0.3s; }
+.lc-status-row:nth-child(3) .lc-dot--active { animation-delay: 0.6s; }
+.lc-status-row:nth-child(4) .lc-dot--active { animation-delay: 0.9s; }
+
+/* ════════════════════════════════════════════
+   Card Internal Layout & Glass Styling
+   Compact, minimal — just enough to read.
+   ════════════════════════════════════════════ */
+
+/* ── WhatsApp Chat ── */
+.lc-chat {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.lc-chat-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  font-size: 0.7rem;
+  font-weight: var(--weight-bold);
+  color: var(--color-white);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+}
+
+.lc-chat-icon { font-size: 0.85rem; }
+
+.lc-chat-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-height: 90px;
+}
+
+.lc-msg {
+  padding: 5px 9px;
+  border-radius: var(--radius-sm);
+  font-size: 0.7rem;
+  line-height: 1.4;
+  max-width: 85%;
+  width: fit-content;
+}
+
+.lc-msg--client {
+  background: rgba(118,38,251,0.25);
+  color: var(--color-white);
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+}
+
+.lc-msg--ai {
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.9);
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+
+.lc-msg--check {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.lc-check {
+  font-size: 0.6rem;
+  color: #38E;
+}
+
+/* Typing indicator */
+.lc-typing {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 6px 10px;
+  align-self: flex-end;
+  background: rgba(255,255,255,0.12);
+  border-radius: var(--radius-sm);
+  border-bottom-right-radius: 4px;
+}
+
+/* ── Calendar ── */
+.lc-cal {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.lc-cal-header {
+  font-size: 0.7rem;
+  font-weight: var(--weight-bold);
+  color: rgba(255,255,255,0.7);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+}
+
+.lc-cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.lc-cal-day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 0;
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.4);
+  border-radius: 4px;
+}
+
+/* ── Notification ── */
+.lc-notif {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lc-notif-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: rgba(208,255,133,0.15);
+  color: #D0FF85;
+  font-size: 0.6rem;
+  font-weight: var(--weight-bold);
+  flex-shrink: 0;
+}
+
+.lc-notif-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-height: 36px;
+}
+
+.lc-notif-line {
+  display: block;
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.3;
+}
+
+/* ── AI Agent Status ── */
+.lc-status {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.lc-status-header {
+  font-size: 0.65rem;
+  font-weight: var(--weight-bold);
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.lc-status-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.65);
+}
+
+/* ════════════════════════════════════════════
+   Responsive — Hide cards per viewport
+   ════════════════════════════════════════════ */
+
+/* Tablet: hide notification */
+@media (max-width: 1023px) and (min-width: 640px) {
+  .live-card--notification { display: none; }
+}
+
+/* Mobile: only dashboard + WhatsApp chat */
+@media (max-width: 639px) {
+  .live-card--calendar     { display: none; }
+  .live-card--notification { display: none; }
+  .live-card--status       { display: none; }
+
+  .live-card--chat {
+    width: 170px;
+    top: -8px;
+    right: 4px;
+  }
+}
+
+/* ════════════════════════════════════════════
+   Reduced Motion — cards visible, no motion
+   ════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  .live-card {
+    animation: none !important;
+  }
+
+  .lc-chat-body > .lc-msg,
+  .lc-chat-body > .lc-typing,
+  .lc-chat-body > .lc-msg--loop,
+  .lc-msg--check .lc-check,
+  .lc-typing .lc-dot,
+  .lc-cal-day,
+  .lc-notif-text > .lc-notif-line,
+  .lc-dot--active {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* All messages visible, no typing */
+  .lc-msg { opacity: 1 !important; }
+  .lc-typing { display: none !important; }
+  .lc-notif-line { opacity: 1 !important; }
+  .lc-cal-day { opacity: 0.5 !important; transform: none !important; filter: none !important; }
+  .lc-dot--active { opacity: 1 !important; transform: none !important; }
+}
 
 /* ═══════════════════════════════════════════════════════════════
    Story Continuity — Hero → Problem Bridge

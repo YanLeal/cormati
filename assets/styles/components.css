@@ -2838,7 +2838,7 @@ footer {
 
 .shift {
   text-align: center;
-  padding: var(--space-9) 0;
+  padding: var(--space-7) 0;
 }
 
 .shift-content {
@@ -2852,7 +2852,7 @@ footer {
 }
 
 .shift-title-group {
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-6);
 }
 
 .shift-old {
@@ -2914,8 +2914,8 @@ footer {
 }
 
 .shift-pivot {
-  margin-top: var(--space-7);
-  padding-top: var(--space-6);
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
   border-top: 1px solid var(--color-neutral-100);
   font-size: clamp(1rem, 2vw, 1.15rem);
   color: var(--color-neutral-600);
@@ -2928,11 +2928,11 @@ footer {
 /* ── Shift Flow Diagram ── */
 
 .shift-flow {
-  padding: var(--space-5) 0 var(--space-6);
+  padding: var(--space-4) 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-3);
+  gap: var(--space-2);
 }
 
 .flow-in,
@@ -2959,17 +2959,17 @@ footer {
 /* ── Source chips: start spread out ── */
 .flow-chip {
   display: inline-block;
-  padding: 5px 14px;
+  padding: 4px 10px;
   background: var(--color-purple-100);
   border-radius: var(--radius-pill);
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   font-weight: var(--weight-bold);
   color: var(--color-primary-500);
   letter-spacing: var(--letter-spacing-wide);
   line-height: 1.4;
   cursor: default;
   /* Separated: spread horizontally, lowered, invisible */
-  transform: translateX(calc((var(--i) - 2.5) * 50px)) translateY(18px);
+  transform: translateX(calc((var(--i) - 2.5) * 28px)) translateY(14px);
   opacity: 0;
   will-change: transform, opacity;
   transition:
@@ -3047,8 +3047,8 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   background: linear-gradient(135deg, var(--color-primary-500), #9B5CFF);
   border-radius: 50%;
   opacity: 0;
@@ -3069,8 +3069,8 @@ footer {
 }
 
 .flow-isologo {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.35))
           drop-shadow(0 0 14px rgba(255, 255, 255, 0.15));
   transition: filter 0.4s ease-out;
@@ -3097,6 +3097,7 @@ footer {
   font-size: clamp(0.9rem, 2vw, 1rem);
   font-weight: var(--weight-semibold);
   color: var(--color-primary-500);
+  margin-top: var(--space-1);
   opacity: 0;
   transition: opacity 0.5s ease-out;
   transition-delay: 0s;
@@ -3108,7 +3109,7 @@ footer {
 }
 
 .flow-climax {
-  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  font-size: clamp(1.2rem, 5vw, 1.5rem);
   font-weight: var(--weight-black);
   line-height: 1.15;
   margin-top: var(--space-2);
@@ -3166,50 +3167,6 @@ footer {
 /* Smooth hover-out transitions */
 .shift-flow .flow-hub {
   transition: box-shadow 0.35s ease-out;
-}
-
-@media (max-width: 639px) {
-  .shift {
-    padding: var(--space-7) 0;
-  }
-
-  .shift-title-group {
-    margin-bottom: var(--space-6);
-  }
-
-  .shift-flow {
-    padding: var(--space-4) 0;
-    gap: var(--space-2);
-  }
-
-  .flow-chip {
-    padding: 4px 10px;
-    font-size: 0.65rem;
-    transform: translateX(calc((var(--i) - 2.5) * 28px)) translateY(14px);
-  }
-
-  .flow-hub {
-    width: 60px;
-    height: 60px;
-  }
-
-  .flow-isologo {
-    width: 30px;
-    height: 30px;
-  }
-
-  .flow-tagline {
-    margin-top: var(--space-1);
-  }
-
-  .flow-climax {
-    font-size: clamp(1.2rem, 5vw, 1.5rem);
-  }
-
-  .shift-pivot {
-    margin-top: var(--space-6);
-    padding-top: var(--space-5);
-  }
 }
 
 /* ════════════════════════════════════════
@@ -3356,6 +3313,51 @@ footer {
 
   .arch-layer--brand {
     min-height: 64px;
+  }
+}
+
+/* ════════════════════════════════════════
+   Desktop — Shift section
+   ════════════════════════════════════════ */
+
+@media (min-width: 640px) {
+
+  .shift {
+    padding: var(--space-9) 0;
+  }
+
+  .shift-title-group {
+    margin-bottom: var(--space-8);
+  }
+
+  .shift-flow {
+    padding: var(--space-5) 0 var(--space-6);
+    gap: var(--space-3);
+  }
+
+  .flow-chip {
+    padding: 5px 14px;
+    font-size: 0.75rem;
+    transform: translateX(calc((var(--i) - 2.5) * 50px)) translateY(18px);
+  }
+
+  .flow-hub {
+    width: 80px;
+    height: 80px;
+  }
+
+  .flow-isologo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .flow-climax {
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+  }
+
+  .shift-pivot {
+    margin-top: var(--space-7);
+    padding-top: var(--space-6);
   }
 }
 

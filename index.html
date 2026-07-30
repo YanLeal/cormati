@@ -261,35 +261,45 @@
             </div>
           </div>
 
-          <!-- Orbiting nodes - AI capabilities -->
+          <!-- Incoming systems — connected to AI Core via animated paths -->
           <div class="core-orbit">
-            <div class="core-node core-node--sales" style="--angle: -135deg;">
-              <span class="core-node-dot"></span>
-              <span class="core-node-label">Ventas</span>
+            <div class="core-system" style="--angle: -135deg;">
+              <span class="core-sys-label">CRM</span>
             </div>
-            <div class="core-node core-node--support" style="--angle: -90deg;">
-              <span class="core-node-dot"></span>
-              <span class="core-node-label">Soporte</span>
+            <div class="core-system" style="--angle: -90deg;">
+              <span class="core-sys-label">ERP</span>
             </div>
-            <div class="core-node core-node--ops" style="--angle: -45deg;">
-              <span class="core-node-dot"></span>
-              <span class="core-node-label">Operaciones</span>
+            <div class="core-system" style="--angle: -45deg;">
+              <span class="core-sys-label">Email</span>
             </div>
-            <div class="core-node core-node--finance" style="--angle: 0deg;">
-              <span class="core-node-dot"></span>
-              <span class="core-node-label">Finanzas</span>
+            <div class="core-system" style="--angle: 0deg;">
+              <span class="core-sys-label">WhatsApp</span>
             </div>
-            <div class="core-node core-node--marketing" style="--angle: 45deg;">
-              <span class="core-node-dot"></span>
-              <span class="core-node-label">Marketing</span>
+            <div class="core-system" style="--angle: 45deg;">
+              <span class="core-sys-label">API</span>
             </div>
-            <div class="core-node core-node--analytics" style="--angle: 90deg;">
-              <span class="core-node-dot"></span>
-              <span class="core-node-label">Analytics</span>
+            <div class="core-system" style="--angle: 90deg;">
+              <span class="core-sys-label">Database</span>
             </div>
           </div>
 
-          <!-- Particle streams connecting nodes to center -->
+          <!-- SVG connections — flowing energy pulses -->
+          <svg class="core-connections" viewBox="0 0 280 280" aria-hidden="true">
+            <path class="conn-track" d="M 41 41 Q 95 90 140 140" />
+            <path class="conn-pulse conn-pulse--1" d="M 41 41 Q 95 90 140 140" />
+            <path class="conn-track" d="M 140 0 Q 160 70 140 140" />
+            <path class="conn-pulse conn-pulse--2" d="M 140 0 Q 160 70 140 140" />
+            <path class="conn-track" d="M 239 41 Q 195 90 140 140" />
+            <path class="conn-pulse conn-pulse--3" d="M 239 41 Q 195 90 140 140" />
+            <path class="conn-track" d="M 280 140 Q 210 130 140 140" />
+            <path class="conn-pulse conn-pulse--4" d="M 280 140 Q 210 130 140 140" />
+            <path class="conn-track" d="M 239 239 Q 190 195 140 140" />
+            <path class="conn-pulse conn-pulse--5" d="M 239 239 Q 190 195 140 140" />
+            <path class="conn-track" d="M 140 280 Q 115 210 140 140" />
+            <path class="conn-pulse conn-pulse--6" d="M 140 280 Q 115 210 140 140" />
+          </svg>
+
+          <!-- Ambient particle streams -->
           <div class="core-streams" aria-hidden="true"></div>
         </div>
 

@@ -1948,53 +1948,74 @@ footer {
   line-height: 1;
 }
 
-/* Orbiting nodes - AI capabilities */
+/* Incoming systems — orbit around core */
 .core-orbit {
   position: absolute;
   inset: 0;
   pointer-events: none;
 }
 
-.core-node {
+.core-system {
   position: absolute;
   top: 50%;
   left: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) rotate(var(--angle)) translateX(140px) rotate(calc(-1 * var(--angle)));
 }
 
-.core-node-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.5);
-  box-shadow: 0 0 8px rgba(118, 38, 251, 0.2);
-  animation: core-node-pulse 3s ease-in-out infinite;
-}
-
-@keyframes core-node-pulse {
-  0%, 100% { opacity: 0.5; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.1); }
-}
-
-.core-node-label {
+.core-sys-label {
   font-size: 0.6rem;
   font-weight: var(--weight-medium);
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.35);
   white-space: nowrap;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.15em;
+  transition: color 0.4s var(--ease-out);
 }
 
-.core-node--sales   { transform: translate(-50%, -50%) rotate(var(--angle)) translateX(140px) rotate(calc(-1 * var(--angle))); }
-.core-node--support { transform: translate(-50%, -50%) rotate(var(--angle)) translateX(140px) rotate(calc(-1 * var(--angle))); }
-.core-node--ops     { transform: translate(-50%, -50%) rotate(var(--angle)) translateX(140px) rotate(calc(-1 * var(--angle))); }
-.core-node--finance { transform: translate(-50%, -50%) rotate(var(--angle)) translateX(140px) rotate(calc(-1 * var(--angle))); }
-.core-node--marketing { transform: translate(-50%, -50%) rotate(var(--angle)) translateX(140px) rotate(calc(-1 * var(--angle))); }
-.core-node--analytics { transform: translate(-50%, -50%) rotate(var(--angle)) translateX(140px) rotate(calc(-1 * var(--angle))); }
+.core-sys-label:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ── Connection paths ── */
+.core-connections {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.conn-track {
+  fill: none;
+  stroke: rgba(118, 38, 251, 0.06);
+  stroke-width: 0.5;
+}
+
+.conn-pulse {
+  fill: none;
+  stroke: rgba(181, 116, 255, 0.35);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-dasharray: 3 160;
+  animation: conn-pulse 4s linear infinite;
+}
+
+.conn-pulse--1 { animation-delay: 0s; }
+.conn-pulse--2 { animation-delay: 0.7s; }
+.conn-pulse--3 { animation-delay: 1.4s; }
+.conn-pulse--4 { animation-delay: 2s; }
+.conn-pulse--5 { animation-delay: 2.7s; }
+.conn-pulse--6 { animation-delay: 3.3s; }
+
+@keyframes conn-pulse {
+  0%   { stroke-dashoffset: 163; opacity: 0; }
+  10%  { opacity: 0.6; }
+  30%  { stroke-dashoffset: 100; opacity: 0.8; }
+  60%  { stroke-dashoffset: 40; opacity: 0.6; }
+  80%  { stroke-dashoffset: 0; opacity: 0.3; }
+  100% { stroke-dashoffset: -10; opacity: 0; }
+}
 
 /* Particle emissions — tiny dots drifting outward from core */
 .core-streams {
@@ -2156,8 +2177,8 @@ footer {
     height: 80px;
   }
 
-  .core-orbit .core-node {
-    transform: translate(-50%, -50%) rotate(var(--angle)) translateX(100px) rotate(calc(-1 * var(--angle))) !important;
+  .core-system {
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateX(100px) rotate(calc(-1 * var(--angle)));
   }
 
   .core-metrics {
@@ -2385,9 +2406,9 @@ footer {
   .core-ring,
   .core-pulse,
   .core-brand,
-  .core-node-dot,
   .story-panel--core::before,
   .core-streams,
+  .conn-pulse,
   .status-dot,
   .agent-indicator {
     animation: none !important;
@@ -2395,9 +2416,9 @@ footer {
 
   .core-pulse { opacity: 0.3; }
   .story-panel--core::before { opacity: 0.5; }
-  .core-node-dot { opacity: 0.7; }
   .core-brand { transform: none; }
   .core-streams { opacity: 0.5; }
+  .conn-pulse { opacity: 0.15; stroke-dashoffset: 0; }
 }
 
 /* ---- Reduced motion for variant layers ---- */

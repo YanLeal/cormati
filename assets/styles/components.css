@@ -2066,6 +2066,20 @@ footer {
   font-weight: var(--weight-bold);
   color: var(--color-white);
   font-variant-numeric: tabular-nums;
+  will-change: transform, text-shadow;
+  transition: none; /* pulse animation handles visual changes */
+}
+
+/* ── KPI pulse — scale + glow on timeline sync ── */
+@keyframes kpi-pulse {
+  0%   { transform: scale(1); text-shadow: 0 0 0 rgba(208, 255, 133, 0); }
+  35%  { transform: scale(1.06); text-shadow: 0 0 18px rgba(208, 255, 133, 0.5); }
+  100% { transform: scale(1); text-shadow: 0 0 0 rgba(208, 255, 133, 0); }
+}
+
+.kpi-pulse {
+  animation: kpi-pulse 280ms var(--ease-out) both;
+}
 }
 
 .core-metric-label {
@@ -2769,6 +2783,11 @@ footer {
   .outcome-dot { opacity: 0.5; animation: none; }
 
   /* Cinematic: show everything immediately, no transitions */
+  .core-metric-value {
+    transition: none !important;
+    animation: none !important;
+  }
+
   .cin-text {
     opacity: 1 !important;
     transform: none !important;

@@ -153,6 +153,7 @@
     items.forEach(function (el, i) {
       setTimeout(function () {
         el.classList.add('tl-visible');
+        if (typeof window.pulseKpi === 'function') window.pulseKpi();
       }, i * ENTER_GAP);
     });
 
@@ -188,6 +189,89 @@
 
   // Also check in case already visible
   startAfterCinematic();
+})();
+
+/**
+ * KPI Counters — Animated business metrics
+ * Smooth ease-out counter, pulses on timeline events.
+ */
+(function initKpiCounters() {
+  'use strict';
+
+  var section = document.querySelector('.story');
+  if (!section) return;
+
+  var metrics = [].slice.call(section.querySelectorAll('.core-metric-value'));
+  if (metrics.length < 3) return;
+
+  // Config: label, target, suffix
+  var targets = [248, 18, 12];
+  var suffixes = ['', ' h', ''];
+
+  var DURATION = 5200; // ms — matches timeline entry window
+  var startTime = null;
+  var frameId = null;
+  var pulseIdx = 0;
+
+  // Ease-out cubic
+  function easeOut(t) {
+    return 1 - Math.pow(1 - t, 3);
+  }
+
+  // Pulse the next KPI in rotation
+  window.pulseKpi = function () {
+    var el = metrics[pulseIdx % metrics.length];
+    el.classList.remove('kpi-pulse');
+    void el.offsetWidth; // reflow
+    el.classList.add('kpi-pulse');
+    setTimeout(function () {
+      el.classList.remove('kpi-pulse');
+    }, 280);
+    pulseIdx++;
+  };
+
+  // Animate frame
+  function tick(now) {
+    if (!startTime) startTime = now;
+    var elapsed = now - startTime;
+    var progress = Math.min(elapsed / DURATION, 1);
+    var eased = easeOut(progress);
+
+    metrics.forEach(function (el, i) {
+      var raw = targets[i] * eased;
+      el.textContent = suffixes[i] === ' h'
+        ? raw.toFixed(1)
+        : Math.round(raw).toString();
+    });
+
+    if (progress < 1) {
+      frameId = requestAnimationFrame(tick);
+    }
+  }
+
+  function reset() {
+    if (frameId) { cancelAnimationFrame(frameId); frameId = null; }
+    startTime = null;
+    pulseIdx = 0;
+    metrics.forEach(function (el) { el.textContent = '0'; });
+  }
+
+  function start() {
+    reset();
+    frameId = requestAnimationFrame(tick);
+  }
+
+  // React to cinematic-visible toggle
+  var obs = new MutationObserver(function () {
+    if (section.classList.contains('cinematic-visible')) {
+      start();
+    } else {
+      reset();
+    }
+  });
+  obs.observe(section, { attributes: true, attributeFilter: ['class'] });
+
+  if (section.classList.contains('cinematic-visible')) start();
 })();
 
 /**

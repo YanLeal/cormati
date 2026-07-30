@@ -836,9 +836,9 @@ footer {
 }
 
 .hero-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
   position: relative;
   z-index: 2;
 }
@@ -2035,16 +2035,24 @@ footer {
 
   /* ---- Hero: editorial 45/55 layout (text | visual) ---- */
   .hero-grid {
-    grid-template-columns: 1fr 1.25fr;
-    gap: 28px;
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
+    gap: 28px;
   }
 
-  .hero-visual  { grid-column: 2; }
-  .hero-content { grid-column: 1; }
+  .hero-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .hero-visual {
+    flex: 1.25;
+    min-width: 0;
+  }
 
   .hero-grid .trust-bar {
-    grid-column: 1 / -1;
+    flex: 0 0 100%;
     margin-top: var(--space-4);
   }
 

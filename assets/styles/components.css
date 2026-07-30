@@ -1102,13 +1102,38 @@ footer {
     linear-gradient(rgba(118, 38, 251, 0.06) 1px, transparent 1px),
     linear-gradient(90deg, rgba(118, 38, 251, 0.06) 1px, transparent 1px);
   background-size: 64px 64px;
-  mask-image: linear-gradient(to bottom, black, transparent 70%);
-}
+   mask-image: linear-gradient(to bottom, black, transparent 70%);
+ }
 
-/* ============================================
-   CTA — Final Section
-   Dark background with gradient
-   ============================================ */
+ /* ============================================
+    Bridge — Transition question between Problem and OS
+    ============================================ */
+
+ .bridge {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   min-height: 50vh;
+   padding: var(--space-8) var(--space-5);
+ }
+
+ .bridge-container {
+   max-width: 800px;
+   text-align: center;
+ }
+
+ .bridge-question {
+   font-size: var(--font-display);
+   font-weight: var(--weight-black);
+   line-height: var(--leading-tight);
+   color: var(--color-white);
+   letter-spacing: -0.02em;
+ }
+
+ /* ============================================
+    CTA — Final Section
+    Dark background with gradient
+    ============================================ */
 
 .cta {
   background: linear-gradient(135deg, #16052E 0%, #4A0C95 50%, var(--color-primary-500) 100%);

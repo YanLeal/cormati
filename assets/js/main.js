@@ -60,6 +60,7 @@
 
 /**
  * Scroll reveal — IntersectionObserver
+ * Fires once per element (unobserves after reveal)
  */
 (function initReveal() {
   'use strict';
@@ -82,14 +83,36 @@
 })();
 
 /**
+ * Story Cinematic Observer — toggles .cinematic-visible
+ * Replays when section re-enters viewport
+ */
+(function initStoryCinematic() {
+  'use strict';
+
+  var section = document.querySelector('.story');
+  if (!section) return;
+
+  var observer = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        entry.target.classList.toggle('cinematic-visible', entry.isIntersecting);
+      });
+    },
+    { threshold: 0.12 }
+  );
+
+  observer.observe(section);
+})();
+
+/**
  * Timeline Loop — Live Activity Panel
  * Items enter one-by-one, accumulate, then exit together and restart.
+ * Controlled by Story cinematic reveal (step 5: 800ms delay).
  */
 (function initTimeline() {
   'use strict';
 
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    // Show all items static for reduced motion
     var sf = document.querySelector('.sp-feed');
     if (sf) {
       [].slice.call(sf.querySelectorAll('.tl-item')).forEach(function (el) {
@@ -102,30 +125,37 @@
   var feed = document.querySelector('.sp-feed');
   if (!feed) return;
 
+  var section = document.querySelector('.story');
+  if (!section) return;
+
   var items = [].slice.call(feed.querySelectorAll('.tl-item'));
   if (items.length === 0) return;
 
-  var ENTER_GAP  = 1500;  // ms between each item's entry
-  var HOLD_MS    = 4000;  // ms all items stay visible
-  var EXIT_MS    = 800;   // ms for exit transition
-  var RESET_MS   = 600;   // ms pause before restart
+  var ENTER_GAP  = 1500;
+  var HOLD_MS    = 4000;
+  var EXIT_MS    = 800;
+  var RESET_MS   = 600;
 
   var timer = null;
 
+  function resetTimeline() {
+    if (timer) { clearTimeout(timer); timer = null; }
+    items.forEach(function (el) {
+      el.classList.remove('tl-visible', 'tl-exit');
+    });
+  }
+
   function cycle() {
-    // 1. Reset all items
     items.forEach(function (el) {
       el.classList.remove('tl-visible', 'tl-exit');
     });
 
-    // 2. Reveal items one by one
     items.forEach(function (el, i) {
       setTimeout(function () {
         el.classList.add('tl-visible');
       }, i * ENTER_GAP);
     });
 
-    // 3. After all items have entered, trigger exit
     var entryEnd = (items.length - 1) * ENTER_GAP + 500;
     setTimeout(function () {
       items.forEach(function (el) {
@@ -133,12 +163,31 @@
       });
     }, entryEnd + HOLD_MS);
 
-    // 4. Schedule next cycle
     var cycleLen = entryEnd + HOLD_MS + EXIT_MS + RESET_MS;
     timer = setTimeout(cycle, cycleLen);
   }
 
-  cycle();
+  // Start when cinematic reveals the section
+  function startAfterCinematic() {
+    if (section.classList.contains('cinematic-visible')) {
+      resetTimeline();
+      timer = setTimeout(cycle, 800); // step 5
+    }
+  }
+
+  // Watch for class toggle
+  var obs = new MutationObserver(function () {
+    if (section.classList.contains('cinematic-visible')) {
+      resetTimeline();
+      timer = setTimeout(cycle, 800);
+    } else {
+      resetTimeline();
+    }
+  });
+  obs.observe(section, { attributes: true, attributeFilter: ['class'] });
+
+  // Also check in case already visible
+  startAfterCinematic();
 })();
 
 /**

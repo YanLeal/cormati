@@ -2254,61 +2254,93 @@ footer {
 }
 
 /* ════════════════════════════════════════
-   Story — Entrance Sequence
-   Choreography: text → panels → background
+   Story — Cinematic Reveal Sequence
+   6 steps ~200ms apart, completes ~1.2s
+   Triggered by .cinematic-visible class
    ════════════════════════════════════════ */
 
-/* Section never fades — children control their own entrance */
-.story[data-reveal] {
-  opacity: 1;
-  transform: none;
-}
-
-/* All entrance items start hidden */
-.reveal-item {
+/* ── Cinematic text entrance ── */
+.cin-text {
   opacity: 0;
-  transform: translateY(16px);
+  transform: translateY(12px);
   transition:
-    opacity 700ms var(--ease-out),
-    transform 700ms var(--ease-out);
-  transition-delay: calc(var(--i) * 120ms);
+    opacity 600ms var(--ease-out),
+    transform 600ms var(--ease-out);
 }
 
-/* Panels entrance — starts after narrative text */
-.story-panels {
+/* ── Step 1 (0ms): Background glow layers + text ── */
+.story:not(.cinematic-visible) .bg-aurora,
+.story:not(.cinematic-visible) .bg-glow,
+.story:not(.cinematic-visible) .bg-fog,
+.story:not(.cinematic-visible) .bg-orb,
+.story:not(.cinematic-visible) .bg-particles-css {
   opacity: 0;
-  transform: translateY(16px);
-  transition:
-    opacity 700ms var(--ease-out),
-    transform 700ms var(--ease-out);
-  transition-delay: 550ms;
 }
 
-/* Background layers start hidden — fade in after panels */
+.story .bg-aurora,
+.story .bg-glow,
 .story .bg-fog,
 .story .bg-orb,
-.story .bg-connections,
 .story .bg-particles-css {
+  transition: opacity 700ms ease-out;
+  transition-delay: 0ms;
+}
+
+/* Text staggered within step 1 */
+.story.cinematic-visible .cin-text {
+  opacity: 1;
+  transform: none;
+}
+.story.cinematic-visible .cin-text:nth-child(1) { transition-delay: 0ms; }
+.story.cinematic-visible .cin-text:nth-child(2) { transition-delay: 80ms; }
+.story.cinematic-visible .cin-text:nth-child(3) { transition-delay: 160ms; }
+.story.cinematic-visible .cin-text:nth-child(4) { transition-delay: 240ms; }
+
+/* ── Step 2 (200ms): AI Core panel ── */
+.story:not(.cinematic-visible) .story-panel--core {
   opacity: 0;
-  transition: opacity 1800ms ease-out 1600ms;
+}
+.story .story-panel--core {
+  transition: opacity 600ms ease-out;
+  transition-delay: 0ms;
+}
+.story.cinematic-visible .story-panel--core {
+  opacity: 1;
+  transition-delay: 200ms;
 }
 
-/* When section scrolls into view */
-.story.visible .reveal-item {
+/* ── Step 3 (400ms): Background connection lines ── */
+.story:not(.cinematic-visible) .bg-connections {
+  opacity: 0;
+}
+.story .bg-connections {
+  transition: opacity 600ms ease-out;
+  transition-delay: 0ms;
+}
+.story.cinematic-visible .bg-connections {
   opacity: 1;
-  transform: none;
+  transition-delay: 400ms;
 }
 
-.story.visible .story-panels {
-  opacity: 1;
-  transform: none;
+/* ── Step 4 (600ms): Energy pulses begin ── */
+.story .conn-pulse {
+  animation: none;
+}
+.story.cinematic-visible .conn-pulse {
+  animation: conn-pulse 4s linear infinite;
+  animation-delay: 600ms;
 }
 
-.story.visible .bg-fog,
-.story.visible .bg-orb,
-.story.visible .bg-connections,
-.story.visible .bg-particles-css {
-  opacity: 1;
+/* ── Step 5 (800ms): Live Activity — handled by JS ── */
+
+/* ── Step 6 (1000ms): Outcome cards ── */
+.story .outcome-card {
+  animation: none;
+  opacity: 0;
+}
+.story.cinematic-visible .outcome-card {
+  animation: outcome-enter 0.6s ease-out forwards;
+  animation-delay: calc(1000ms + var(--i) * 120ms);
 }
 
 /* Background Variant Overrides */
@@ -2732,20 +2764,29 @@ footer {
   .story-panel--core::before { opacity: 0.5; }
   .core-brand { transform: none; }
   .core-streams { opacity: 0.5; }
-  .conn-pulse { opacity: 0.15; stroke-dashoffset: 0; }
-  .outcome-card { opacity: 1; transform: none; }
+  .conn-pulse { opacity: 0.15; stroke-dashoffset: 0; animation: none !important; }
+  .outcome-card { opacity: 1; transform: none; animation: none !important; }
   .outcome-dot { opacity: 0.5; animation: none; }
 
-  /* Entrance: show everything immediately */
-  .reveal-item,
-  .story-panels,
-  .story .bg-fog,
-  .story .bg-orb,
-  .story .bg-connections,
-  .story .bg-particles-css {
+  /* Cinematic: show everything immediately, no transitions */
+  .cin-text {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
+  }
+  .story .story-panel--core,
+  .story .bg-aurora,
+  .story .bg-glow,
+  .story .bg-fog,
+  .story .bg-orb,
+  .story .bg-particles-css,
+  .story .bg-connections {
+    opacity: 1 !important;
+    transition: none !important;
+  }
+  .story .outcome-card {
+    opacity: 1 !important;
+    animation: none !important;
   }
 }
 

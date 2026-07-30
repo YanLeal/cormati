@@ -1072,6 +1072,20 @@ footer {
  }
 
  /* ============================================
+    Workforce — Operations Center Background
+    Dark, grounded, deep. No futurism.
+    ============================================ */
+
+ #workforce {
+   background:
+     radial-gradient(ellipse 80% 60% at 50% 40%, rgba(90, 30, 160, 0.12), transparent),
+     radial-gradient(ellipse 60% 40% at 50% 80%, rgba(118, 38, 251, 0.08), transparent 50%),
+     linear-gradient(180deg, #06060E 0%, #0C0C1A 40%, #0A0A14 100%);
+   background-size: 100% 100%;
+   color: var(--color-white);
+ }
+
+ /* ============================================
     CTA — Final Section
     Dark background with gradient
     ============================================ */

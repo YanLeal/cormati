@@ -2229,7 +2229,7 @@ footer {
 .story-body {
   font-size: var(--font-body);
   line-height: 1.7;
-  color: var(--color-gray-300);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .story-actions {

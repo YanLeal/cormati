@@ -2033,11 +2033,14 @@ footer {
 
 @media (min-width: 640px) {
 
-  /* ---- Hero: 2 columns ---- */
+  /* ---- Hero: 2 columns (text | visual) ---- */
   .hero-grid {
     grid-template-columns: 1fr 1fr;
     align-items: center;
   }
+
+  .hero-visual  { grid-column: 2; }
+  .hero-content { grid-column: 1; }
 
   .hero-grid .trust-bar {
     grid-column: 1 / -1;

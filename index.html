@@ -49,22 +49,28 @@
   </nav>
 
   <header id="inicio" class="section hero" data-bg-variant="hero" data-bg-transition>
+    <!-- ════════════════════════════════════
+         Layer 1: Background Engine
+         Always present. Aurora + glow
+         animate on their own timeline.
+         ════════════════════════════════════ -->
     <div class="bg-section-ambient" aria-hidden="true">
       <div class="bg-aurora bg-layer"></div>
       <div class="bg-glow bg-layer"></div>
     </div>
     <div class="section-grid -hero" aria-hidden="true"></div>
+
+    <!-- ════════════════════════════════════
+         Layer 2: Content + Product Visualization
+         Choreographed entrance:
+           Visual (400ms) → Content (550ms+)
+         ════════════════════════════════════ -->
     <div class="container hero-grid">
-      <div class="hero-content">
-        <span class="eyebrow reveal reveal-1">Una operación. Una plataforma.</span>
-        <h1 class="reveal reveal-1">Muchos softwares.<br>Muchas licencias.<br><span class="gradient-text">Poco control.</span></h1>
-        <p class="lead reveal reveal-2">Tu empresa no necesita otra herramienta. Necesita dejar de operar como si cada área fuera una empresa distinta.</p>
-        <div class="hero-actions reveal reveal-3">
-          <a class="btn-primary" href="#demo">Empieza a operar en un solo lugar →</a>
-          <a class="btn-light glass" href="#plataforma">Descubre cómo funciona</a>
-        </div>
-      </div>
-      <div class="hero-visual reveal reveal-4">
+
+      <!-- ── Product Visualization ──
+           OS interface enters at 400ms.
+           Floating cards managed by lifecycle. -->
+      <div class="hero-visual reveal reveal-1">
         <div class="os-frame glass">
           <div class="os-panel">
             <div class="os-indicator">
@@ -90,7 +96,7 @@
           </div>
         </div>
 
-        <!-- Floating Live Cards -->
+        <!-- Floating Live Cards — lifecycle-driven visibility -->
         <div class="live-card live-card--chat glass" aria-hidden="true">
           <div class="lc-chat">
             <div class="lc-chat-header">
@@ -146,7 +152,22 @@
           </div>
         </div>
       </div>
-      <div class="trust-bar reveal reveal-3">
+
+      <!-- ── Content Layer ──
+           Staggered wave: eyebrow (550ms) → h1 (630ms) →
+           p (710ms) → actions (790ms) → trust (870ms) -->
+      <div class="hero-content">
+        <span class="eyebrow reveal reveal-3">Una operación. Una plataforma.</span>
+        <h1 class="reveal reveal-4">Muchos softwares.<br>Muchas licencias.<br><span class="gradient-text">Poco control.</span></h1>
+        <p class="lead reveal reveal-5">Tu empresa no necesita otra herramienta. Necesita dejar de operar como si cada área fuera una empresa distinta.</p>
+        <div class="hero-actions reveal reveal-6">
+          <a class="btn-primary" href="#demo">Empieza a operar en un solo lugar →</a>
+          <a class="btn-light glass" href="#plataforma">Descubre cómo funciona</a>
+        </div>
+      </div>
+
+      <!-- Trust indicators — full-width, enters at 870ms -->
+      <div class="trust-bar reveal reveal-7">
         <span class="trust-item">★★★★★ 4.9/5</span>
         <span class="trust-item">2,000+ empresas activas</span>
         <span class="trust-item">Integración en 48h</span>

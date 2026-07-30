@@ -22,15 +22,35 @@
 /* ---- Max widths ---- */
 .max-w-820 { max-width: 820px; }
 
-/* ---- Motion Choreography — Reveal System ---- */
+/* ---- Motion Choreography — Choreographed Reveal System ----
+   Layer sequence:
+     Background (0ms) → Glow (200ms) → Visual (400ms) → Content (550ms+)
+   Sub-sequences use --reveal-stagger (80ms) for wave entrance.
+   ============================================================ */
 .reveal {
   animation: hero-fade-up 600ms var(--ease-out) var(--delay) both;
 }
 
-.reveal-1 { --delay: var(--delay-short); }
-.reveal-2 { --delay: var(--delay-medium); }
-.reveal-3 { --delay: var(--delay-long); }
-.reveal-4 { --delay: calc(var(--delay-long) + var(--delay-medium)); }
+/* Layer: Hero Visual — OS frame enters at 400ms */
+.reveal-1 { --delay: var(--delay-visual); }
+
+/* Layer: Hero Visual Inner — panel details at 480ms */
+.reveal-2 { --delay: var(--delay-visual-inner); }
+
+/* Layer: Content — Eyebrow starts at 550ms */
+.reveal-3 { --delay: var(--delay-content); }
+
+/* Layer: Content Stagger 1 — Headline at 630ms */
+.reveal-4 { --delay: calc(var(--delay-content) + var(--reveal-stagger)); }
+
+/* Layer: Content Stagger 2 — Supporting text at 710ms */
+.reveal-5 { --delay: calc(var(--delay-content) + var(--reveal-stagger) * 2); }
+
+/* Layer: Content Stagger 3 — Actions at 790ms */
+.reveal-6 { --delay: calc(var(--delay-content) + var(--reveal-stagger) * 3); }
+
+/* Layer: Content Stagger 4 — Trust indicators at 870ms */
+.reveal-7 { --delay: calc(var(--delay-content) + var(--reveal-stagger) * 4); }
 
 /* ---- Reduced motion safety ---- */
 @media (prefers-reduced-motion: reduce) {

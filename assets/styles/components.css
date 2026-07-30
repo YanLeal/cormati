@@ -1115,6 +1115,9 @@ footer {
    justify-content: center;
    min-height: 50vh;
    padding: var(--space-8) var(--space-5);
+   background: linear-gradient(135deg, #16052E 0%, #4A0C95 50%, var(--color-primary-500) 100%);
+   background-size: 200% 200%;
+   animation: drift var(--bg-duration-hero) ease-in-out infinite;
  }
 
  .bridge-container {

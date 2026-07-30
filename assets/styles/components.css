@@ -442,15 +442,17 @@ button:focus-visible,
 /* ---- Trust Bar ---- */
 .trust-bar {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  gap: var(--space-6);
+  gap: var(--space-2);
   flex-wrap: wrap;
-  margin-top: var(--space-6);
+  margin-top: var(--space-4);
 }
 
 .trust-item {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: var(--space-2);
   font-size: var(--font-small);
   color: rgba(255, 255, 255, 0.75);
@@ -1118,6 +1120,7 @@ footer {
 
 .hero-actions {
   display: flex;
+  flex-direction: column;
   gap: var(--space-2);
   flex-wrap: wrap;
   margin-top: var(--space-5);
@@ -1129,6 +1132,7 @@ footer {
   min-width: 0;
   padding: 14px 18px;
   text-align: center;
+  width: 100%;
 }
 
 .btn-primary {
@@ -3198,7 +3202,18 @@ footer {
   .hero-grid .trust-bar {
     order: 3;
     flex: 0 0 100%;
+    flex-direction: row;
+    gap: var(--space-6);
     margin-top: var(--space-8);
+  }
+
+  .hero-actions {
+    flex-direction: row;
+  }
+
+  .hero-actions .btn-primary,
+  .hero-actions .btn-light {
+    width: auto;
   }
 
   /* ---- Problem: 2 columns (content | image) ---- */
@@ -3366,42 +3381,6 @@ footer {
    ════════════════════════════════════════ */
 
 @media (max-width: 639px) {
-
-  /* ---- Hero: stack, visual after content ---- */
-  .hero-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
-
-  .hero-content {
-    order: 1;
-  }
-
-  .hero-visual {
-    order: 2;
-  }
-
-  .hero-actions {
-    flex-direction: column;
-  }
-
-  .hero-actions .btn-primary,
-  .hero-actions .btn-light {
-    width: 100%;
-    text-align: center;
-  }
-
-  .trust-bar {
-    order: 3;
-    flex-direction: column;
-    gap: var(--space-2);
-    margin-top: var(--space-4);
-  }
-
-  .trust-bar .trust-item {
-    justify-content: center;
-  }
 
   /* ---- Section grids: stack ---- */
   .problem-grid,

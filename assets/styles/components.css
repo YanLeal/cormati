@@ -1085,6 +1085,10 @@ footer {
    color: var(--color-white);
  }
 
+ .workforce-scene {
+   min-height: 70vh;
+ }
+
  /* ============================================
     CTA — Final Section
     Dark background with gradient

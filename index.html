@@ -194,90 +194,41 @@
           <h2 class="sp-title">Actividad del sistema</h2>
         </div>
 
-        <div class="sp-feed" role="log" aria-label="Feed de actividad">
-          <article class="sp-item sp-item--enter" data-activity="connect">
-            <span class="sp-dot"></span>
-            <div class="sp-content">
-              <span class="sp-source">CRM</span>
-              <span class="sp-action">Nuevo lead sincronizado</span>
-              <span class="sp-meta">hace 2s</span>
-            </div>
-            <span class="sp-status sp-status--ok">✓</span>
-          </article>
-
-          <article class="sp-item sp-item--enter" data-activity="process" style="animation-delay: 150ms;">
-            <span class="sp-dot"></span>
-            <div class="sp-content">
-              <span class="sp-source">ERP</span>
-              <span class="sp-action">Orden de compra procesada</span>
-              <span class="sp-meta">hace 5s</span>
-            </div>
-            <span class="sp-status sp-status--ok">✓</span>
-          </article>
-
-          <article class="sp-item sp-item--enter" data-activity="analyze" style="animation-delay: 300ms;">
-            <span class="sp-dot"></span>
-            <div class="sp-content">
-              <span class="sp-source">Email</span>
-              <span class="sp-action">Clasificación automática completada</span>
-              <span class="sp-meta">hace 8s</span>
-            </div>
-            <span class="sp-status sp-status--ok">✓</span>
-          </article>
-
-          <article class="sp-item sp-item--enter" data-activity="respond" style="animation-delay: 450ms;">
-            <span class="sp-dot"></span>
-            <div class="sp-content">
-              <span class="sp-source">WhatsApp</span>
-              <span class="sp-action">Respuesta IA enviada al cliente</span>
-              <span class="sp-meta">hace 12s</span>
-            </div>
-            <span class="sp-status sp-status--ok">✓</span>
-          </article>
-
-          <article class="sp-item sp-item--enter" data-activity="compute" style="animation-delay: 600ms;">
-            <span class="sp-dot"></span>
-            <div class="sp-content">
-              <span class="sp-source">Excel</span>
-              <span class="sp-action">Reporte financiero generado</span>
-              <span class="sp-meta">hace 18s</span>
-            </div>
-            <span class="sp-status sp-status--ok">✓</span>
-          </article>
-
-          <article class="sp-item sp-item--enter" data-activity="sync" style="animation-delay: 750ms;">
-            <span class="sp-dot"></span>
-            <div class="sp-content">
-              <span class="sp-source">API</span>
-              <span class="sp-action">Webhook de inventario recibido</span>
-              <span class="sp-meta">hace 22s</span>
-            </div>
-            <span class="sp-status sp-status--ok">✓</span>
-          </article>
-
-          <article class="sp-item sp-item--enter" data-activity="query" style="animation-delay: 900ms;">
-            <span class="sp-dot"></span>
-            <div class="sp-content">
-              <span class="sp-source">Database</span>
-              <span class="sp-action">Consulta analítica ejecutada</span>
-              <span class="sp-meta">hace 28s</span>
-            </div>
-            <span class="sp-status sp-status--ok">✓</span>
-          </article>
-
-          <!-- Live typing indicator -->
-          <article class="sp-item sp-item--live" aria-hidden="true">
-            <span class="sp-dot sp-dot--pulse"></span>
-            <div class="sp-content">
-              <span class="sp-source">IA Agente</span>
-              <span class="sp-action sp-action--typing">Procesando solicitud<span class="sp-typing"><span>.</span><span>.</span><span>.</span></span></span>
-            </div>
-          </article>
+        <div class="sp-feed" role="log" aria-label="Timeline de operaciones">
+          <div class="tl-item">
+            <span class="tl-time">09:42</span>
+            <span class="tl-desc">Lead recibido</span>
+            <span class="tl-check" aria-hidden="true">✓</span>
+          </div>
+          <div class="tl-item">
+            <span class="tl-time">09:42</span>
+            <span class="tl-desc">Intención detectada</span>
+            <span class="tl-check" aria-hidden="true">✓</span>
+          </div>
+          <div class="tl-item">
+            <span class="tl-time">09:43</span>
+            <span class="tl-desc">IA asignó agente de ventas</span>
+            <span class="tl-check" aria-hidden="true">✓</span>
+          </div>
+          <div class="tl-item">
+            <span class="tl-time">09:43</span>
+            <span class="tl-desc">Reunión agendada</span>
+            <span class="tl-check" aria-hidden="true">✓</span>
+          </div>
+          <div class="tl-item">
+            <span class="tl-time">09:44</span>
+            <span class="tl-desc">CRM actualizado</span>
+            <span class="tl-check" aria-hidden="true">✓</span>
+          </div>
+          <div class="tl-item">
+            <span class="tl-time">09:44</span>
+            <span class="tl-desc">Notificación enviada</span>
+            <span class="tl-check" aria-hidden="true">✓</span>
+          </div>
         </div>
 
         <div class="sp-footer">
-          <span class="sp-stat">Procesados <strong>247</strong> eventos hoy</span>
-          <span class="sp-stat">Latencia <strong><50ms</strong></span>
+          <span class="tl-footnote">Todo ocurre automáticamente.</span>
         </div>
       </div>
 

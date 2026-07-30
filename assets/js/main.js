@@ -82,6 +82,66 @@
 })();
 
 /**
+ * Timeline Loop — Live Activity Panel
+ * Items enter one-by-one, accumulate, then exit together and restart.
+ */
+(function initTimeline() {
+  'use strict';
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    // Show all items static for reduced motion
+    var sf = document.querySelector('.sp-feed');
+    if (sf) {
+      [].slice.call(sf.querySelectorAll('.tl-item')).forEach(function (el) {
+        el.classList.add('tl-visible');
+      });
+    }
+    return;
+  }
+
+  var feed = document.querySelector('.sp-feed');
+  if (!feed) return;
+
+  var items = [].slice.call(feed.querySelectorAll('.tl-item'));
+  if (items.length === 0) return;
+
+  var ENTER_GAP  = 1500;  // ms between each item's entry
+  var HOLD_MS    = 4000;  // ms all items stay visible
+  var EXIT_MS    = 800;   // ms for exit transition
+  var RESET_MS   = 600;   // ms pause before restart
+
+  var timer = null;
+
+  function cycle() {
+    // 1. Reset all items
+    items.forEach(function (el) {
+      el.classList.remove('tl-visible', 'tl-exit');
+    });
+
+    // 2. Reveal items one by one
+    items.forEach(function (el, i) {
+      setTimeout(function () {
+        el.classList.add('tl-visible');
+      }, i * ENTER_GAP);
+    });
+
+    // 3. After all items have entered, trigger exit
+    var entryEnd = (items.length - 1) * ENTER_GAP + 500;
+    setTimeout(function () {
+      items.forEach(function (el) {
+        el.classList.add('tl-exit');
+      });
+    }, entryEnd + HOLD_MS);
+
+    // 4. Schedule next cycle
+    var cycleLen = entryEnd + HOLD_MS + EXIT_MS + RESET_MS;
+    timer = setTimeout(cycle, cycleLen);
+  }
+
+  cycle();
+})();
+
+/**
  * Particle Engine — Ambient Energy Particles (Layer 05)
  */
 (function initParticles() {

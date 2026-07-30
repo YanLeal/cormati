@@ -1105,6 +1105,26 @@ footer {
   mask-image: linear-gradient(to bottom, black, transparent 70%);
 }
 
+/* ============================================
+   CTA — Final Section
+   Dark background with gradient
+   ============================================ */
+
+.cta {
+  background: linear-gradient(135deg, #16052E 0%, #4A0C95 50%, var(--color-primary-500) 100%);
+  background-size: 200% 200%;
+  animation: drift var(--bg-duration-hero) ease-in-out infinite;
+  color: var(--color-white);
+}
+
+.cta .eyebrow {
+  color: #DABFFF;
+}
+
+.cta .lead {
+  color: rgba(255, 255, 255, 0.85);
+}
+
 .section-grid.-cta {
   opacity: 0.12;
   background-image:

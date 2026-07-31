@@ -1126,6 +1126,21 @@ footer {
     transform: translate(-50%, -50%) rotate(calc(var(--i) * 60deg)) translateX(160px) rotate(calc(var(--i) * -60deg));
   }
 
+  .workforce-connections {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 360px;
+    height: 360px;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .workforce-connections line {
+    stroke: rgba(118, 38, 251, 0.2);
+    stroke-width: 1;
+  }
+
   /* ============================================
      CTA — Final Section
     Dark background with gradient

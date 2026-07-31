@@ -1076,7 +1076,7 @@ footer {
      ============================================ */
 
   .workforce-transition {
-    padding: 70px 0 35px;
+    padding: 70px 0 0;
     background: #06060E;
     color: var(--color-white);
     text-align: center;
@@ -1117,6 +1117,11 @@ footer {
       linear-gradient(180deg, #06060E 0%, #0C0C1A 40%, #0A0A14 100%);
     background-size: 100% 100%;
     color: var(--color-white);
+    overflow: visible;
+  }
+
+  #workforce .lead {
+    color: rgba(255, 255, 255, 0.85);
   }
 
   .workforce-scene {
@@ -1212,9 +1217,9 @@ footer {
     letter-spacing: 0.02em;
   }
 
-  .workforce-footer {
+  .workforce-footnote {
     max-width: 480px;
-    margin: var(--space-9) auto 0;
+    margin: 0 auto;
     text-align: center;
     color: rgba(255, 255, 255, 0.55);
     font-size: 0.9rem;
@@ -1294,16 +1299,12 @@ footer {
     }
 
     .workforce-transition {
-      padding: 48px 0 28px;
+      padding: 48px 0 0;
     }
 
     .workforce-scene {
       min-height: 70vh;
     }
-  }
-
-  .workforce-header .lead {
-    margin-bottom: 0;
   }
 
   /* ---- Reduced motion: workforce section ---- */
@@ -1330,7 +1331,7 @@ footer {
       transition: none !important;
     }
 
-    .workforce-footer [data-reveal] {
+    .workforce-footnote[data-reveal] {
       opacity: 1 !important;
       transform: none !important;
       transition: none !important;

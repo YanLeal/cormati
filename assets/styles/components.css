@@ -1234,6 +1234,7 @@ footer {
   .workforce-connections .lines-base line {
     stroke: rgba(118, 38, 251, 0.2);
     stroke-width: 1;
+    transition: stroke 0.3s, stroke-width 0.3s;
   }
 
   .workforce-connections .lines-pulse line {
@@ -1242,6 +1243,7 @@ footer {
     stroke-linecap: round;
     stroke-dasharray: 6 320;
     animation: flow 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    transition: stroke 0.3s;
   }
 
   .workforce-connections .lines-pulse line:nth-child(1) { animation-delay: 0s; }
@@ -1250,6 +1252,26 @@ footer {
   .workforce-connections .lines-pulse line:nth-child(4) { animation-delay: 1.26s; }
   .workforce-connections .lines-pulse line:nth-child(5) { animation-delay: 1.68s; }
   .workforce-connections .lines-pulse line:nth-child(6) { animation-delay: 2.1s; }
+
+  /* ── Hover: node → connection line ── */
+  .workforce-scene:has(.workforce-node:nth-of-type(1):hover) .lines-base line:nth-of-type(1),
+  .workforce-scene:has(.workforce-node:nth-of-type(2):hover) .lines-base line:nth-of-type(2),
+  .workforce-scene:has(.workforce-node:nth-of-type(3):hover) .lines-base line:nth-of-type(3),
+  .workforce-scene:has(.workforce-node:nth-of-type(4):hover) .lines-base line:nth-of-type(4),
+  .workforce-scene:has(.workforce-node:nth-of-type(5):hover) .lines-base line:nth-of-type(5),
+  .workforce-scene:has(.workforce-node:nth-of-type(6):hover) .lines-base line:nth-of-type(6) {
+    stroke: rgba(168, 85, 247, 0.5);
+    stroke-width: 1.5;
+  }
+
+  .workforce-scene:has(.workforce-node:nth-of-type(1):hover) .lines-pulse line:nth-of-type(1),
+  .workforce-scene:has(.workforce-node:nth-of-type(2):hover) .lines-pulse line:nth-of-type(2),
+  .workforce-scene:has(.workforce-node:nth-of-type(3):hover) .lines-pulse line:nth-of-type(3),
+  .workforce-scene:has(.workforce-node:nth-of-type(4):hover) .lines-pulse line:nth-of-type(4),
+  .workforce-scene:has(.workforce-node:nth-of-type(5):hover) .lines-pulse line:nth-of-type(5),
+  .workforce-scene:has(.workforce-node:nth-of-type(6):hover) .lines-pulse line:nth-of-type(6) {
+    stroke: rgba(168, 85, 247, 0.8);
+  }
 
   @keyframes flow {
     0%   { stroke-dashoffset: 0; }

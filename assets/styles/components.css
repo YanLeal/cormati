@@ -1192,9 +1192,29 @@ footer {
     background: transparent;
   }
 
-  .workforce-connections line {
+  .workforce-connections .lines-base line {
     stroke: rgba(118, 38, 251, 0.2);
     stroke-width: 1;
+  }
+
+  .workforce-connections .lines-pulse line {
+    stroke: rgba(168, 85, 247, 0.5);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-dasharray: 6 320;
+    animation: flow 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .workforce-connections .lines-pulse line:nth-child(1) { animation-delay: 0s; }
+  .workforce-connections .lines-pulse line:nth-child(2) { animation-delay: 0.42s; }
+  .workforce-connections .lines-pulse line:nth-child(3) { animation-delay: 0.84s; }
+  .workforce-connections .lines-pulse line:nth-child(4) { animation-delay: 1.26s; }
+  .workforce-connections .lines-pulse line:nth-child(5) { animation-delay: 1.68s; }
+  .workforce-connections .lines-pulse line:nth-child(6) { animation-delay: 2.1s; }
+
+  @keyframes flow {
+    0%   { stroke-dashoffset: 0; }
+    100% { stroke-dashoffset: -154; }
   }
 
   @media (max-width: 639px) {

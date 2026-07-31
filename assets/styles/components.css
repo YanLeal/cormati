@@ -1136,6 +1136,7 @@ footer {
     box-shadow: 0 0 40px 15px rgba(118, 38, 251, 0.3),
                 0 0 80px 30px rgba(118, 38, 251, 0.1);
     animation: breath 9s ease-in-out infinite;
+    will-change: transform;
   }
 
   @keyframes breath {
@@ -1189,6 +1190,7 @@ footer {
     background: #22C55E;
     box-shadow: 0 0 6px 2px rgba(34, 197, 94, 0.4);
     animation: dot-pulse 2.5s ease-in-out infinite;
+    will-change: opacity;
   }
 
   @keyframes dot-pulse {
@@ -1235,6 +1237,7 @@ footer {
     stroke: rgba(118, 38, 251, 0.2);
     stroke-width: 1;
     transition: stroke 0.3s, stroke-width 0.3s;
+    will-change: stroke;
   }
 
   .workforce-connections .lines-pulse line {
@@ -1244,6 +1247,7 @@ footer {
     stroke-dasharray: 6 320;
     animation: flow 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
     transition: stroke 0.3s;
+    will-change: stroke-dashoffset;
   }
 
   .workforce-connections .lines-pulse line:nth-child(1) { animation-delay: 0s; }
@@ -1254,23 +1258,25 @@ footer {
   .workforce-connections .lines-pulse line:nth-child(6) { animation-delay: 2.1s; }
 
   /* ── Hover: node → connection line ── */
-  .workforce-scene:has(.workforce-node:nth-of-type(1):hover) .lines-base line:nth-of-type(1),
-  .workforce-scene:has(.workforce-node:nth-of-type(2):hover) .lines-base line:nth-of-type(2),
-  .workforce-scene:has(.workforce-node:nth-of-type(3):hover) .lines-base line:nth-of-type(3),
-  .workforce-scene:has(.workforce-node:nth-of-type(4):hover) .lines-base line:nth-of-type(4),
-  .workforce-scene:has(.workforce-node:nth-of-type(5):hover) .lines-base line:nth-of-type(5),
-  .workforce-scene:has(.workforce-node:nth-of-type(6):hover) .lines-base line:nth-of-type(6) {
-    stroke: rgba(168, 85, 247, 0.5);
-    stroke-width: 1.5;
-  }
+  @media (hover: hover) {
+    .workforce-scene:has(.workforce-node:nth-of-type(1):hover) .lines-base line:nth-of-type(1),
+    .workforce-scene:has(.workforce-node:nth-of-type(2):hover) .lines-base line:nth-of-type(2),
+    .workforce-scene:has(.workforce-node:nth-of-type(3):hover) .lines-base line:nth-of-type(3),
+    .workforce-scene:has(.workforce-node:nth-of-type(4):hover) .lines-base line:nth-of-type(4),
+    .workforce-scene:has(.workforce-node:nth-of-type(5):hover) .lines-base line:nth-of-type(5),
+    .workforce-scene:has(.workforce-node:nth-of-type(6):hover) .lines-base line:nth-of-type(6) {
+      stroke: rgba(168, 85, 247, 0.5);
+      stroke-width: 1.5;
+    }
 
-  .workforce-scene:has(.workforce-node:nth-of-type(1):hover) .lines-pulse line:nth-of-type(1),
-  .workforce-scene:has(.workforce-node:nth-of-type(2):hover) .lines-pulse line:nth-of-type(2),
-  .workforce-scene:has(.workforce-node:nth-of-type(3):hover) .lines-pulse line:nth-of-type(3),
-  .workforce-scene:has(.workforce-node:nth-of-type(4):hover) .lines-pulse line:nth-of-type(4),
-  .workforce-scene:has(.workforce-node:nth-of-type(5):hover) .lines-pulse line:nth-of-type(5),
-  .workforce-scene:has(.workforce-node:nth-of-type(6):hover) .lines-pulse line:nth-of-type(6) {
-    stroke: rgba(168, 85, 247, 0.8);
+    .workforce-scene:has(.workforce-node:nth-of-type(1):hover) .lines-pulse line:nth-of-type(1),
+    .workforce-scene:has(.workforce-node:nth-of-type(2):hover) .lines-pulse line:nth-of-type(2),
+    .workforce-scene:has(.workforce-node:nth-of-type(3):hover) .lines-pulse line:nth-of-type(3),
+    .workforce-scene:has(.workforce-node:nth-of-type(4):hover) .lines-pulse line:nth-of-type(4),
+    .workforce-scene:has(.workforce-node:nth-of-type(5):hover) .lines-pulse line:nth-of-type(5),
+    .workforce-scene:has(.workforce-node:nth-of-type(6):hover) .lines-pulse line:nth-of-type(6) {
+      stroke: rgba(168, 85, 247, 0.8);
+    }
   }
 
   @keyframes flow {
@@ -1285,12 +1291,51 @@ footer {
       --ws: 260px;
       --wn: 32px;
     }
+
+    .workforce-transition {
+      padding: 80px 0;
+    }
+
+    .workforce-scene {
+      min-height: 60vh;
+    }
   }
 
-  /* ============================================
-     CTA — Final Section
-    Dark background with gradient
-    ============================================ */
+  /* ---- Reduced motion: workforce section ---- */
+  @media (prefers-reduced-motion: reduce) {
+    .workforce-hub {
+      animation: none !important;
+      transform: translate(-50%, -50%) scale(1) !important;
+    }
+
+    .workforce-connections .lines-pulse line {
+      animation: none !important;
+      stroke-dasharray: none !important;
+      stroke: rgba(118, 38, 251, 0.3);
+    }
+
+    .node-avatar::after {
+      animation: none !important;
+      opacity: 0.7;
+    }
+
+    .transition-line[data-reveal] {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+
+    .workforce-footer [data-reveal] {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+
+    /* ============================================
+       CTA — Final Section
+      Dark background with gradient
+      ============================================ */
 
 .cta {
   background: linear-gradient(135deg, #16052E 0%, #4A0C95 50%, var(--color-primary-500) 100%);

@@ -1145,6 +1145,16 @@ footer {
       0 0 140px 60px rgba(118, 38, 251, 0.06);
     animation: hub-breath 14s ease-in-out infinite;
     will-change: transform;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hub-isologo {
+    width: 45%;
+    height: 45%;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+    opacity: 0.9;
   }
 
   @keyframes hub-breath {

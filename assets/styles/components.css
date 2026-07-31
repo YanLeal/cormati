@@ -1071,10 +1071,40 @@ footer {
    letter-spacing: -0.02em;
  }
 
- /* ============================================
-    Workforce — Operations Center Background
-    Dark, grounded, deep. No futurism.
-    ============================================ */
+  /* ============================================
+     Workforce Transition — Bridge between sections
+     ============================================ */
+
+  .workforce-transition {
+    padding: 120px 0;
+    background: #06060E;
+    color: var(--color-white);
+    text-align: center;
+  }
+
+  .transition-line {
+    font-size: clamp(1.25rem, 3vw, 2rem);
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  .transition-line + .transition-line {
+    margin-top: 0.5em;
+  }
+
+  .transition-line.is-em {
+    color: var(--color-primary-400, #A855F7);
+    font-weight: 600;
+  }
+
+  .transition-line[data-reveal] {
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  /* ============================================
+     Workforce — Operations Center Background
+     Dark, grounded, deep. No futurism.
+     ============================================ */
 
   #workforce {
     --wr: 160px;  /* node radius */

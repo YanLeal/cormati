@@ -1301,6 +1301,10 @@ footer {
     }
   }
 
+  .workforce-header .lead {
+    margin-bottom: 0;
+  }
+
   /* ---- Reduced motion: workforce section ---- */
   @media (prefers-reduced-motion: reduce) {
     .workforce-hub {

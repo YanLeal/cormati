@@ -1080,7 +1080,7 @@ footer {
     --wr: 160px;  /* node radius */
     --wh: 160px;  /* hub size */
     --ws: 360px;  /* svg size */
-    --wn: 32px;   /* node size */
+    --wn: 40px;   /* avatar size */
     background:
       radial-gradient(ellipse 80% 60% at 50% 40%, rgba(90, 30, 160, 0.12), transparent),
       radial-gradient(ellipse 60% 40% at 50% 80%, rgba(118, 38, 251, 0.08), transparent 50%),
@@ -1125,12 +1125,32 @@ footer {
     position: absolute;
     top: 50%;
     left: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    transform: translate(-50%, -50%) rotate(calc(var(--i) * 60deg)) translateX(var(--wr)) rotate(calc(var(--i) * -60deg));
+  }
+
+  .node-avatar {
     width: var(--wn);
     height: var(--wn);
     border-radius: 50%;
     background: rgba(118, 38, 251, 0.6);
     box-shadow: 0 0 12px 4px rgba(118, 38, 251, 0.3);
-    transform: translate(-50%, -50%) rotate(calc(var(--i) * 60deg)) translateX(var(--wr)) rotate(calc(var(--i) * -60deg));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+    font-weight: 700;
+    font-size: calc(var(--wn) * 0.45);
+    line-height: 1;
+  }
+
+  .node-symbol {
+    width: 14px;
+    height: 14px;
+    color: rgba(255, 255, 255, 0.35);
   }
 
   .workforce-connections {
@@ -1156,7 +1176,7 @@ footer {
       --wr: 110px;
       --wh: 120px;
       --ws: 260px;
-      --wn: 24px;
+      --wn: 32px;
     }
   }
 

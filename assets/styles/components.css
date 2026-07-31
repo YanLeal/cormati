@@ -1072,36 +1072,6 @@ footer {
  }
 
   /* ============================================
-     Workforce Transition — Bridge between sections
-     ============================================ */
-
-  .workforce-transition {
-    padding: 70px 0 0;
-    background: #06060E;
-    color: var(--color-white);
-    text-align: center;
-  }
-
-  .transition-line {
-    font-size: clamp(1.25rem, 3vw, 2rem);
-    line-height: 1.4;
-    margin: 0;
-  }
-
-  .transition-line + .transition-line {
-    margin-top: 0.5em;
-  }
-
-  .transition-line.is-em {
-    color: var(--color-primary-400, #A855F7);
-    font-weight: 600;
-  }
-
-  .transition-line[data-reveal] {
-    transition-delay: var(--reveal-delay, 0ms);
-  }
-
-  /* ============================================
      Workforce — Operations Center Background
      Dark, grounded, deep. No futurism.
      ============================================ */
@@ -1111,6 +1081,7 @@ footer {
     --wh: 160px;  /* hub size */
     --ws: 360px;  /* svg size */
     --wn: 40px;   /* avatar size */
+    padding: 40px 0 48px;
     background:
       radial-gradient(ellipse 80% 60% at 50% 40%, rgba(90, 30, 160, 0.12), transparent),
       radial-gradient(ellipse 60% 40% at 50% 80%, rgba(118, 38, 251, 0.08), transparent 50%),
@@ -1120,14 +1091,19 @@ footer {
     overflow: visible;
   }
 
+  #workforce .eyebrow {
+    margin-bottom: var(--space-4);
+  }
+
   #workforce .lead {
     color: rgba(255, 255, 255, 0.85);
+    margin-bottom: var(--space-6);
   }
 
   .workforce-scene {
-    min-height: 90vh;
+    min-height: max(500px, 56vh);
     position: relative;
-    transform: scale(1.7);
+    transform: scale(1.35);
   }
 
   .workforce-hub {
@@ -1174,6 +1150,22 @@ footer {
     }
   }
 
+  /* Breath móvil: scale-only (el hub ya no usa translate en mobile) */
+  @keyframes hub-breath-mobile {
+    0%, 100% {
+      transform: scale(1);
+      box-shadow:
+        0 0 20px 6px rgba(118, 38, 251, 0.35),
+        0 0 50px 20px rgba(118, 38, 251, 0.12);
+    }
+    50% {
+      transform: scale(1.02);
+      box-shadow:
+        0 0 26px 10px rgba(118, 38, 251, 0.4),
+        0 0 70px 30px rgba(118, 38, 251, 0.16);
+    }
+  }
+
   .workforce-node {
     position: absolute;
     top: 50%;
@@ -1182,7 +1174,11 @@ footer {
     flex-direction: column;
     align-items: center;
     gap: 6px;
-    transform: translate(-50%, -50%) rotate(calc(var(--i) * 60deg)) translateX(var(--wr)) rotate(calc(var(--i) * -60deg));
+    transform: translate(-50%, -50%)
+               translateY(var(--node-y, 0px))
+               rotate(calc(var(--i) * 60deg + var(--node-angle, 0deg)))
+               translateX(calc(var(--wr) * var(--node-dist, 1)))
+               rotate(calc(var(--i) * -60deg));
   }
 
   .node-avatar {
@@ -1248,13 +1244,176 @@ footer {
     letter-spacing: 0.02em;
   }
 
-  .workforce-footnote {
-    max-width: 480px;
-    margin: 0 auto;
+  /* ---- Rol: personalidad visual (sin cambiar tamaño) ---- */
+
+  /* Ventas — dinámico: respira más rápido, pulso vivo */
+  .workforce-node.node-ventas .node-avatar {
+    animation-duration: 2.6s;
+  }
+
+  .workforce-node.node-ventas .node-avatar::after {
+    animation-duration: 1.6s;
+  }
+
+  /* Finanzas — estable: sin respiración, sello firme, dot fijo */
+  .workforce-node.node-finanzas .node-avatar {
+    animation: none;
+    transform: scale(1);
+    box-shadow:
+      0 0 10px 3px rgba(118, 38, 251, 0.35),
+      0 0 26px 10px rgba(118, 38, 251, 0.12),
+      inset 0 0 0 1.5px rgba(168, 85, 247, 0.35);
+  }
+
+  .workforce-node.node-finanzas .node-avatar::after {
+    animation: none;
+    opacity: 1;
+  }
+
+  /* Operaciones — conectado: anillo de señal + línea más activa */
+  .workforce-node.node-operaciones .node-avatar::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: 1px solid rgba(34, 197, 94, 0.45);
+    animation: connect-ping 2.5s ease-out infinite;
+    will-change: transform, opacity;
+    pointer-events: none;
+  }
+
+  .workforce-connections .lines-base line:nth-of-type(4) {
+    filter: brightness(1.6);
+    stroke-width: 1.5;
+  }
+
+  .workforce-connections .lines-pulse line:nth-of-type(4) {
+    animation-duration: 1.6s, 14s;
+  }
+
+  @keyframes connect-ping {
+    0%   { transform: scale(0.95); opacity: 0.9; }
+    100% { transform: scale(1.7);  opacity: 0; }
+  }
+
+  /* Dirección — importante: dorado, anillo, respiración pausada */
+  .workforce-node.node-direccion .node-avatar {
+    background: radial-gradient(circle at 35% 30%, rgba(253, 224, 71, 0.85), rgba(180, 83, 9, 0.55) 60%);
+    box-shadow:
+      0 0 10px 3px rgba(217, 119, 6, 0.4),
+      0 0 32px 14px rgba(217, 119, 6, 0.14),
+      0 0 0 2px rgba(253, 224, 71, 0.35);
+    animation-duration: 6s;
+  }
+
+  /* ---- Timeline narrativo ----
+     Ciclo 20s: cada frase ocupa su ventana de 4s (--t * 4s).
+     Aparece, se mantiene, desaparece; una flecha marca el paso. */
+  .workforce-timeline {
+    position: relative;
+    height: 4.5rem;
+    margin-top: 2rem;
+  }
+
+  .timeline-phrase {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.85);
     text-align: center;
-    color: rgba(255, 255, 255, 0.55);
+    white-space: nowrap;
+    animation: timeline-cycle 20s ease-in-out infinite;
+    animation-delay: calc(var(--t) * 4s);
+    will-change: opacity;
+  }
+
+  .timeline-phrase.timeline-final {
+    color: var(--color-white);
+    font-weight: 600;
+  }
+
+  .timeline-arrow {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
     font-size: 0.9rem;
-    line-height: 1.7;
+    line-height: 1;
+    color: rgba(168, 85, 247, 0.7);
+    opacity: 0;
+    animation: timeline-arrow 4s ease-in-out infinite;
+    will-change: opacity;
+  }
+
+  @keyframes timeline-cycle {
+    0%   { opacity: 0; }
+    6%   { opacity: 1; }
+    13%  { opacity: 1; }
+    18%  { opacity: 0; }
+    100% { opacity: 0; }
+  }
+
+  @keyframes timeline-arrow {
+    0%   { opacity: 0; }
+    85%  { opacity: 0; }
+    88%  { opacity: 0.9; }
+    94%  { opacity: 0; }
+    100% { opacity: 0; }
+  }
+
+  /* ---- Scroll reveal: entrada coreografiada ----
+     #workforce.workforce-visible dispara la cascada (JS).
+     Título → Lead → Hub → Especialistas → Conexiones → Timeline.
+     Cada paso con su delay: nunca todo a la vez. */
+
+  #workforce .eyebrow,
+  #workforce h2,
+  #workforce .lead,
+  #workforce .workforce-hub,
+  #workforce .workforce-node,
+  #workforce .workforce-connections,
+  #workforce .workforce-timeline {
+    opacity: 0;
+  }
+
+  #workforce.workforce-visible .eyebrow {
+    animation: wf-reveal 0.6s var(--ease-out) 0s both;
+  }
+
+  #workforce.workforce-visible h2 {
+    animation: wf-reveal 0.6s var(--ease-out) 0.1s both;
+  }
+
+  #workforce.workforce-visible .lead {
+    animation: wf-reveal 0.6s var(--ease-out) 0.25s both;
+  }
+
+  #workforce.workforce-visible .workforce-hub {
+    animation:
+      wf-reveal 0.8s var(--ease-out) 0.45s both,
+      hub-breath 14s ease-in-out 0s infinite;
+  }
+
+  #workforce.workforce-visible .workforce-node {
+    animation: wf-reveal 0.7s var(--ease-out) both;
+    animation-delay: calc(0.7s + var(--i) * 0.07s);
+  }
+
+  #workforce.workforce-visible .workforce-connections {
+    animation: wf-reveal 0.9s var(--ease-out) 1.1s both;
+  }
+
+  #workforce.workforce-visible .workforce-timeline {
+    animation: wf-reveal 0.8s var(--ease-out) 1.35s both;
+  }
+
+  @keyframes wf-reveal {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
   }
 
   .workforce-connections {
@@ -1271,30 +1430,36 @@ footer {
   }
 
   .workforce-connections .lines-base line {
-    stroke: rgba(118, 38, 251, 0.2);
     stroke-width: 1;
-    transition: stroke 0.3s, stroke-width 0.3s;
-    will-change: stroke;
+    transition: filter 0.3s, stroke-width 0.3s;
+    will-change: stroke-width;
   }
 
   .workforce-connections .lines-pulse line {
-    stroke: rgba(168, 85, 247, 0.5);
     stroke-width: 2;
     stroke-linecap: round;
-    stroke-dasharray: 6 320;
-    animation: flow 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-    transition: stroke 0.3s;
-    will-change: stroke-dashoffset;
+    stroke-dasharray: 10 316;
+    animation:
+      flow 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite,
+      breath-react 14s ease-in-out infinite;
+    will-change: stroke-dashoffset, stroke-width;
   }
 
-  .workforce-connections .lines-pulse line:nth-child(1) { animation-delay: 0s; }
-  .workforce-connections .lines-pulse line:nth-child(2) { animation-delay: 0.42s; }
-  .workforce-connections .lines-pulse line:nth-child(3) { animation-delay: 0.84s; }
-  .workforce-connections .lines-pulse line:nth-child(4) { animation-delay: 1.26s; }
-  .workforce-connections .lines-pulse line:nth-child(5) { animation-delay: 1.68s; }
-  .workforce-connections .lines-pulse line:nth-child(6) { animation-delay: 2.1s; }
+  .workforce-connections .lines-particles circle {
+    opacity: 0.8;
+  }
 
-  /* ── Hover: node → connection line ── */
+  /* breath-react se sincroniza con hub-breath (14s).
+     Cada línea lleva su propio delay → nunca todas a la vez. */
+  .workforce-connections .lines-pulse line:nth-child(1) { animation-delay: 0s, 0s; }
+  .workforce-connections .lines-pulse line:nth-child(2) { animation-delay: 0.42s, -2.33s; }
+  .workforce-connections .lines-pulse line:nth-child(3) { animation-delay: 0.84s, -4.67s; }
+  .workforce-connections .lines-pulse line:nth-child(4) { animation-delay: 1.26s, -7s; }
+  .workforce-connections .lines-pulse line:nth-child(5) { animation-delay: 1.68s, -9.33s; }
+  .workforce-connections .lines-pulse line:nth-child(6) { animation-delay: 2.1s, -11.67s; }
+
+  /* ── Hover: node → connection line (base) ──
+     El pulso no se toca en hover: su filter lo controla breath-react. */
   @media (hover: hover) {
     .workforce-scene:has(.workforce-node:nth-of-type(1):hover) .lines-base line:nth-of-type(1),
     .workforce-scene:has(.workforce-node:nth-of-type(2):hover) .lines-base line:nth-of-type(2),
@@ -1302,39 +1467,107 @@ footer {
     .workforce-scene:has(.workforce-node:nth-of-type(4):hover) .lines-base line:nth-of-type(4),
     .workforce-scene:has(.workforce-node:nth-of-type(5):hover) .lines-base line:nth-of-type(5),
     .workforce-scene:has(.workforce-node:nth-of-type(6):hover) .lines-base line:nth-of-type(6) {
-      stroke: rgba(168, 85, 247, 0.5);
-      stroke-width: 1.5;
-    }
-
-    .workforce-scene:has(.workforce-node:nth-of-type(1):hover) .lines-pulse line:nth-of-type(1),
-    .workforce-scene:has(.workforce-node:nth-of-type(2):hover) .lines-pulse line:nth-of-type(2),
-    .workforce-scene:has(.workforce-node:nth-of-type(3):hover) .lines-pulse line:nth-of-type(3),
-    .workforce-scene:has(.workforce-node:nth-of-type(4):hover) .lines-pulse line:nth-of-type(4),
-    .workforce-scene:has(.workforce-node:nth-of-type(5):hover) .lines-pulse line:nth-of-type(5),
-    .workforce-scene:has(.workforce-node:nth-of-type(6):hover) .lines-pulse line:nth-of-type(6) {
-      stroke: rgba(168, 85, 247, 0.8);
+      filter: brightness(2);
+      stroke-width: 1.8;
     }
   }
 
   @keyframes flow {
     0%   { stroke-dashoffset: 0; }
-    100% { stroke-dashoffset: -154; }
+    100% { stroke-dashoffset: -326; }
+  }
+
+  /* Reacción a la respiración del hub: la línea se enciende,
+     el cometa se alarga, y vuelve a reposo. */
+  @keyframes breath-react {
+    0%, 50%, 100% {
+      filter: brightness(1);
+      stroke-width: 2;
+      stroke-dasharray: 10 316;
+    }
+    6% {
+      filter: brightness(2.4);
+      stroke-width: 3.2;
+      stroke-dasharray: 26 300;
+    }
+    16% {
+      filter: brightness(1.1);
+      stroke-width: 2;
+      stroke-dasharray: 10 316;
+    }
   }
 
   @media (max-width: 639px) {
     #workforce {
-      --wr: 110px;
-      --wh: 120px;
-      --ws: 260px;
-      --wn: 32px;
+      --wh: 104px;
+      --wn: 36px;
     }
 
-    .workforce-transition {
-      padding: 48px 0 0;
-    }
-
+    /* Layout móvil: hub centrado + especialistas en grilla.
+       Sin órbita, sin scale, sin absolutos → sin overflow, sin superposición. */
     .workforce-scene {
-      min-height: 70vh;
+      min-height: 0;
+      transform: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px 12px;
+      justify-items: stretch;
+    }
+
+    .workforce-hub {
+      position: static;
+      top: auto;
+      left: auto;
+      transform: none;
+      grid-column: 1 / -1;
+      justify-self: center;
+      animation: hub-breath-mobile 14s ease-in-out infinite;
+    }
+
+    .workforce-connections {
+      display: none;
+    }
+
+    .workforce-node {
+      position: static;
+      top: auto;
+      left: auto;
+      transform: none;
+      flex-direction: row;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      padding: 4px 10px 4px 4px;
+      background: rgba(118, 38, 251, 0.08);
+      border: 1px solid rgba(118, 38, 251, 0.16);
+      border-radius: 999px;
+    }
+
+    .node-name {
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .workforce-timeline {
+      margin-top: 2rem;
+    }
+
+    .timeline-phrase {
+      font-size: 0.9rem;
+    }
+
+    /* La coreografía de entrada conserva la secuencia,
+       con el breath móvil (scale-only) en el hub. */
+    #workforce.workforce-visible .workforce-hub {
+      animation:
+        wf-reveal 0.8s var(--ease-out) 0.45s both,
+        hub-breath-mobile 14s ease-in-out 0s infinite;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #workforce .workforce-hub {
+        transform: none !important;
+      }
     }
   }
 
@@ -1348,7 +1581,11 @@ footer {
     .workforce-connections .lines-pulse line {
       animation: none !important;
       stroke-dasharray: none !important;
-      stroke: rgba(118, 38, 251, 0.3);
+      filter: brightness(0.7);
+    }
+
+    .workforce-connections .lines-particles {
+      display: none;
     }
 
     .node-avatar {
@@ -1364,13 +1601,36 @@ footer {
       opacity: 0.6;
     }
 
-    .transition-line[data-reveal] {
-      opacity: 1 !important;
-      transform: none !important;
-      transition: none !important;
+    .workforce-node.node-operaciones .node-avatar::before {
+      display: none;
     }
 
-    .workforce-footnote[data-reveal] {
+    .workforce-timeline .timeline-phrase {
+      animation: none !important;
+      opacity: 0 !important;
+    }
+
+    .workforce-timeline .timeline-phrase.timeline-final {
+      opacity: 1 !important;
+    }
+
+    .workforce-timeline .timeline-arrow {
+      display: none;
+    }
+
+    /* Scroll reveal: mostrar todo de una, sin coreografía */
+    #workforce .eyebrow,
+    #workforce h2,
+    #workforce .lead,
+    #workforce .workforce-hub,
+    #workforce .workforce-node,
+    #workforce .workforce-connections,
+    #workforce .workforce-timeline {
+      opacity: 1 !important;
+      animation: none !important;
+    }
+
+    .transition-line[data-reveal] {
       opacity: 1 !important;
       transform: none !important;
       transition: none !important;

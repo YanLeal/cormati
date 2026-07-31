@@ -336,6 +336,36 @@
 })();
 
 /**
+ * Workforce Reveal — coreografía de entrada de sección
+ * Título → Lead → Hub → Especialistas → Conexiones → Timeline
+ * Nunca todo a la vez; un solo disparo al entrar en viewport.
+ */
+(function initWorkforceReveal() {
+  'use strict';
+  var workforce = document.getElementById('workforce');
+  if (!workforce) return;
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    workforce.classList.add('workforce-visible');
+    return;
+  }
+
+  var observer = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('workforce-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  observer.observe(workforce);
+})();
+
+/**
  * Particle Engine — Ambient Energy Particles (Layer 05)
  */
 (function initParticles() {

@@ -486,13 +486,6 @@
     </div>
   </section>
 
-  <section class="workforce-transition">
-    <div class="container text-center">
-      <p class="transition-line" data-reveal>Un sistema operativo organiza.</p>
-      <p class="transition-line is-em" data-reveal style="--reveal-delay: 250ms">Una fuerza de trabajo ejecuta.</p>
-    </div>
-  </section>
-
   <section id="workforce" class="section">
     <div class="container">
       <span class="eyebrow purple">Fuerza de trabajo</span>
@@ -509,51 +502,125 @@
           </svg>
         </div>
         <svg class="workforce-connections" xmlns="http://www.w3.org/2000/svg" viewBox="-180 -180 360 360" aria-hidden="true">
+          <defs>
+            <linearGradient id="wf-grad-1" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="160" y2="0">
+              <stop offset="0%" stop-color="#A855F7" stop-opacity="0.5"></stop>
+              <stop offset="45%" stop-color="#7C3AED" stop-opacity="0.22"></stop>
+              <stop offset="100%" stop-color="#C084FC" stop-opacity="0.1"></stop>
+            </linearGradient>
+            <linearGradient id="wf-grad-2" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="80" y2="138.56">
+              <stop offset="0%" stop-color="#A855F7" stop-opacity="0.5"></stop>
+              <stop offset="45%" stop-color="#7C3AED" stop-opacity="0.22"></stop>
+              <stop offset="100%" stop-color="#C084FC" stop-opacity="0.1"></stop>
+            </linearGradient>
+            <linearGradient id="wf-grad-3" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="-80" y2="138.56">
+              <stop offset="0%" stop-color="#A855F7" stop-opacity="0.5"></stop>
+              <stop offset="45%" stop-color="#7C3AED" stop-opacity="0.22"></stop>
+              <stop offset="100%" stop-color="#C084FC" stop-opacity="0.1"></stop>
+            </linearGradient>
+            <linearGradient id="wf-grad-4" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="-160" y2="0">
+              <stop offset="0%" stop-color="#A855F7" stop-opacity="0.5"></stop>
+              <stop offset="45%" stop-color="#7C3AED" stop-opacity="0.22"></stop>
+              <stop offset="100%" stop-color="#C084FC" stop-opacity="0.1"></stop>
+            </linearGradient>
+            <linearGradient id="wf-grad-5" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="-80" y2="-138.56">
+              <stop offset="0%" stop-color="#A855F7" stop-opacity="0.5"></stop>
+              <stop offset="45%" stop-color="#7C3AED" stop-opacity="0.22"></stop>
+              <stop offset="100%" stop-color="#C084FC" stop-opacity="0.1"></stop>
+            </linearGradient>
+            <linearGradient id="wf-grad-6" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="80" y2="-138.56">
+              <stop offset="0%" stop-color="#A855F7" stop-opacity="0.5"></stop>
+              <stop offset="45%" stop-color="#7C3AED" stop-opacity="0.22"></stop>
+              <stop offset="100%" stop-color="#C084FC" stop-opacity="0.1"></stop>
+            </linearGradient>
+            <radialGradient id="wf-particle" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#F3E8FF" stop-opacity="0.9"></stop>
+              <stop offset="100%" stop-color="#A855F7" stop-opacity="0"></stop>
+            </radialGradient>
+          </defs>
           <g class="lines-base">
-            <line x1="0" y1="0" x2="160" y2="0"></line>
-            <line x1="0" y1="0" x2="80" y2="138.56"></line>
-            <line x1="0" y1="0" x2="-80" y2="138.56"></line>
-            <line x1="0" y1="0" x2="-160" y2="0"></line>
-            <line x1="0" y1="0" x2="-80" y2="-138.56"></line>
-            <line x1="0" y1="0" x2="80" y2="-138.56"></line>
+            <line x1="0" y1="0" x2="160" y2="0" stroke="url(#wf-grad-1)"></line>
+            <line x1="0" y1="0" x2="80" y2="138.56" stroke="url(#wf-grad-2)"></line>
+            <line x1="0" y1="0" x2="-80" y2="138.56" stroke="url(#wf-grad-3)"></line>
+            <line x1="0" y1="0" x2="-160" y2="0" stroke="url(#wf-grad-4)"></line>
+            <line x1="0" y1="0" x2="-80" y2="-138.56" stroke="url(#wf-grad-5)"></line>
+            <line x1="0" y1="0" x2="80" y2="-138.56" stroke="url(#wf-grad-6)"></line>
+          </g>
+          <g class="lines-particles">
+            <circle cx="0" cy="0" r="2.2" fill="url(#wf-particle)">
+              <animate attributeName="cx" values="0;160" dur="3s" repeatCount="indefinite" begin="-0.5s"></animate>
+              <animate attributeName="cy" values="0;0" dur="3s" repeatCount="indefinite" begin="-0.5s"></animate>
+              <animate attributeName="opacity" values="0;0.85;0" dur="3s" repeatCount="indefinite" begin="-0.5s"></animate>
+            </circle>
+            <circle cx="0" cy="0" r="2.2" fill="url(#wf-particle)">
+              <animate attributeName="cx" values="0;80" dur="3s" repeatCount="indefinite" begin="-1s"></animate>
+              <animate attributeName="cy" values="0;138.56" dur="3s" repeatCount="indefinite" begin="-1s"></animate>
+              <animate attributeName="opacity" values="0;0.85;0" dur="3s" repeatCount="indefinite" begin="-1s"></animate>
+            </circle>
+            <circle cx="0" cy="0" r="2.2" fill="url(#wf-particle)">
+              <animate attributeName="cx" values="0;-80" dur="3s" repeatCount="indefinite" begin="-1.5s"></animate>
+              <animate attributeName="cy" values="0;138.56" dur="3s" repeatCount="indefinite" begin="-1.5s"></animate>
+              <animate attributeName="opacity" values="0;0.85;0" dur="3s" repeatCount="indefinite" begin="-1.5s"></animate>
+            </circle>
+            <circle cx="0" cy="0" r="2.2" fill="url(#wf-particle)">
+              <animate attributeName="cx" values="0;-160" dur="3s" repeatCount="indefinite" begin="-2s"></animate>
+              <animate attributeName="cy" values="0;0" dur="3s" repeatCount="indefinite" begin="-2s"></animate>
+              <animate attributeName="opacity" values="0;0.85;0" dur="3s" repeatCount="indefinite" begin="-2s"></animate>
+            </circle>
+            <circle cx="0" cy="0" r="2.2" fill="url(#wf-particle)">
+              <animate attributeName="cx" values="0;-80" dur="3s" repeatCount="indefinite" begin="-2.5s"></animate>
+              <animate attributeName="cy" values="0;-138.56" dur="3s" repeatCount="indefinite" begin="-2.5s"></animate>
+              <animate attributeName="opacity" values="0;0.85;0" dur="3s" repeatCount="indefinite" begin="-2.5s"></animate>
+            </circle>
+            <circle cx="0" cy="0" r="2.2" fill="url(#wf-particle)">
+              <animate attributeName="cx" values="0;80" dur="3s" repeatCount="indefinite" begin="-3s"></animate>
+              <animate attributeName="cy" values="0;-138.56" dur="3s" repeatCount="indefinite" begin="-3s"></animate>
+              <animate attributeName="opacity" values="0;0.85;0" dur="3s" repeatCount="indefinite" begin="-3s"></animate>
+            </circle>
           </g>
           <g class="lines-pulse">
-            <line x1="0" y1="0" x2="160" y2="0"></line>
-            <line x1="0" y1="0" x2="80" y2="138.56"></line>
-            <line x1="0" y1="0" x2="-80" y2="138.56"></line>
-            <line x1="0" y1="0" x2="-160" y2="0"></line>
-            <line x1="0" y1="0" x2="-80" y2="-138.56"></line>
-            <line x1="0" y1="0" x2="80" y2="-138.56"></line>
+            <line x1="0" y1="0" x2="160" y2="0" stroke="url(#wf-grad-1)"></line>
+            <line x1="0" y1="0" x2="80" y2="138.56" stroke="url(#wf-grad-2)"></line>
+            <line x1="0" y1="0" x2="-80" y2="138.56" stroke="url(#wf-grad-3)"></line>
+            <line x1="0" y1="0" x2="-160" y2="0" stroke="url(#wf-grad-4)"></line>
+            <line x1="0" y1="0" x2="-80" y2="-138.56" stroke="url(#wf-grad-5)"></line>
+            <line x1="0" y1="0" x2="80" y2="-138.56" stroke="url(#wf-grad-6)"></line>
           </g>
         </svg>
-        <div class="workforce-node" style="--i: 0">
+        <div class="workforce-node node-ventas" style="--i: 0; --node-dist: 1.00; --node-angle: 3deg; --node-y: 0px">
           <div class="node-avatar">V</div>
           <span class="node-name">Ventas</span>
         </div>
-        <div class="workforce-node" style="--i: 1">
+        <div class="workforce-node" style="--i: 1; --node-dist: 1.06; --node-angle: -4deg; --node-y: -5px">
           <div class="node-avatar">S</div>
           <span class="node-name">Soporte</span>
         </div>
-        <div class="workforce-node" style="--i: 2">
+        <div class="workforce-node node-finanzas" style="--i: 2; --node-dist: 0.93; --node-angle: 5deg; --node-y: 6px">
           <div class="node-avatar">F</div>
           <span class="node-name">Finanzas</span>
         </div>
-        <div class="workforce-node" style="--i: 3">
+        <div class="workforce-node node-operaciones" style="--i: 3; --node-dist: 1.04; --node-angle: -3deg; --node-y: -4px">
           <div class="node-avatar">O</div>
           <span class="node-name">Operaciones</span>
         </div>
-        <div class="workforce-node" style="--i: 4">
+        <div class="workforce-node" style="--i: 4; --node-dist: 0.96; --node-angle: 4deg; --node-y: 5px">
           <div class="node-avatar">P</div>
           <span class="node-name">Proyectos</span>
         </div>
-        <div class="workforce-node" style="--i: 5">
+        <div class="workforce-node node-direccion" style="--i: 5; --node-dist: 1.02; --node-angle: -2deg; --node-y: -2px">
           <div class="node-avatar">D</div>
           <span class="node-name">Dirección</span>
         </div>
       </div>
-      <p class="workforce-footnote" data-reveal>Tu capacidad operativa se multiplica.<br>
-      Cada área con su especialista. Siempre activo.<br>
-      Tu operación nunca se detiene.</p>
+      <div class="workforce-timeline" aria-hidden="true">
+        <p class="timeline-phrase" style="--t: 0">Ventas respondió.</p>
+        <p class="timeline-phrase" style="--t: 1">Soporte resolvió un caso.</p>
+        <p class="timeline-phrase" style="--t: 2">Finanzas validó un pago.</p>
+        <p class="timeline-phrase" style="--t: 3">Dirección recibió el reporte.</p>
+        <p class="timeline-phrase timeline-final" style="--t: 4">Tu operación nunca dejó de avanzar.</p>
+        <span class="timeline-arrow">↓</span>
+      </div>
+      <p class="sr-only">Ventas respondió. Soporte resolvió un caso. Finanzas validó un pago. Dirección recibió el reporte. Tu operación nunca dejó de avanzar.</p>
     </div>
   </section>
 

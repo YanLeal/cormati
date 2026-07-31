@@ -1126,7 +1126,7 @@ footer {
     border-radius: 50%;
     background: rgba(118, 38, 251, 0.6);
     box-shadow: 0 0 12px 4px rgba(118, 38, 251, 0.3);
-    transform: translate(-50%, -50%) rotate(calc(var(--i) * 90deg)) translateX(160px) rotate(calc(var(--i) * -90deg));
+    transform: translate(-50%, -50%) rotate(calc(var(--i) * 60deg)) translateX(160px) rotate(calc(var(--i) * -60deg));
   }
 
   .workforce-connections {

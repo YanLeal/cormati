@@ -1137,7 +1137,9 @@ footer {
     height: 360px;
     transform: translate(-50%, -50%);
     pointer-events: none;
-    animation: breath 9s ease-in-out infinite;
+    overflow: visible;
+    display: block;
+    background: transparent;
   }
 
   .workforce-connections line {

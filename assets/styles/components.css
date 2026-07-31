@@ -1120,8 +1120,9 @@ footer {
   }
 
   .workforce-scene {
-    min-height: 70vh;
+    min-height: 90vh;
     position: relative;
+    transform: scale(1.7);
   }
 
   .workforce-hub {
@@ -1297,7 +1298,7 @@ footer {
     }
 
     .workforce-scene {
-      min-height: 60vh;
+      min-height: 70vh;
     }
   }
 

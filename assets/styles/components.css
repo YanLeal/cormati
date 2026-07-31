@@ -1089,6 +1089,31 @@ footer {
    min-height: 70vh;
  }
 
+ .workforce-hub {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   width: 240px;
+   height: 240px;
+   border-radius: 50%;
+   background: var(--color-primary-500);
+   box-shadow: 0 0 60px 20px rgba(118, 38, 251, 0.35),
+               0 0 120px 40px rgba(118, 38, 251, 0.15);
+   animation: pulse 3s ease-in-out infinite;
+ }
+
+ @keyframes pulse {
+   0%, 100% {
+     box-shadow: 0 0 60px 20px rgba(118, 38, 251, 0.35),
+                 0 0 120px 40px rgba(118, 38, 251, 0.15);
+   }
+   50% {
+     box-shadow: 0 0 80px 30px rgba(118, 38, 251, 0.45),
+                 0 0 160px 60px rgba(118, 38, 251, 0.25);
+   }
+ }
+
  /* ============================================
     CTA — Final Section
     Dark background with gradient

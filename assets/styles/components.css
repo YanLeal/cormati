@@ -1076,7 +1076,7 @@ footer {
      ============================================ */
 
   .workforce-transition {
-    padding: 70px 0;
+    padding: 70px 0 35px;
     background: #06060E;
     color: var(--color-white);
     text-align: center;
@@ -1293,7 +1293,7 @@ footer {
     }
 
     .workforce-transition {
-      padding: 48px 0;
+      padding: 48px 0 28px;
     }
 
     .workforce-scene {
